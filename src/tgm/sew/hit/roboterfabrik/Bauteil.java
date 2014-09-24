@@ -17,9 +17,19 @@ public class Bauteil {
 
 	/**
 	 *
-	 * @return
+	 * @return 1 wenn das Bauteil ein arm ist, 2 wenn es ein auge ist, 3 wenn es ein rumpf ist, 4 wenn es ein kettenl ist und 0 wenn es keines der vorher angeführten Typen ist
 	 */
 	public Integer isTyp() {
-		return 1;
+		switch (this.typ) {
+			case "arm":
+				return 1;
+			case "auge":
+				return 2;
+			case "rumpf":
+				return 3;
+			case "kettenl":
+				return 4;
+		}
+		return 0;
 	}
 }
