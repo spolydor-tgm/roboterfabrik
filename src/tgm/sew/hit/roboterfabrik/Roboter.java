@@ -1,5 +1,7 @@
 package tgm.sew.hit.roboterfabrik;
 
+import java.util.Arrays;
+
 /**
  * Created by Stefan Polydor on 24.09.14.
  */
@@ -19,13 +21,19 @@ public class Roboter {
 	 */
 	private String name;
 
-
 	/**
 	 * Erstellt einen Roboter
-	 * @param bauteile sind die Bauteile die zur Erstellung des Roboters benötigt werden
+	 * @param bauteile sind die Bauteile die zur Erstellung des Roboters benötigt werden.
+	 *                 Reihenfolge: Arm, Arm, Auge Auge, Rumpf, Kettenl
 	 */
 	public Roboter(Bauteil[] bauteile) {
-
+		this.verwBauteile = bauteile;
+		int[] sort;
+		for (int x = 0; x < bauteile.length; x++) {
+			sort = bauteile[x].getSeriennr();
+			Arrays.sort(sort);
+			verwBauteile[x].setSeriennr(sort);
+		}
 	}
 
 	/**

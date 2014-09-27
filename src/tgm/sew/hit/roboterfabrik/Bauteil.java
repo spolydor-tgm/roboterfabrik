@@ -17,7 +17,23 @@ public class Bauteil {
 
 	/**
 	 *
-	 * @param typ gibt an, welche art dieser Bauteil ist. Gültige eingaben: "arm", "auge", "rumpf", "kettenl"
+	 * @return gibt die seriennr des Bauteil's zurueck
+	 */
+	public int[] getSeriennr() {
+		return this.seriennr;
+	}
+
+	/**
+	 *
+	 * @param seriennr ist die seriennr die fuer das Bauteil gespeicher wird
+	 */
+	public void setSeriennr(int[] seriennr) {
+		this.seriennr = seriennr;
+	}
+
+	/**
+	 *
+	 * @param typ gibt an, welche art dieser Bauteil ist. Gueltige eingaben: "arm", "auge", "rumpf", "kettenl"
 	 * @param seriennr
 	 * @throws IllegalAccessException
 	 */
