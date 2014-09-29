@@ -4,23 +4,29 @@ package tgm.sew.hit.roboterfabrik;
  * Created by Stefan Polydor on 24.09.14.
  */
 public class Lagermitarbeiter {
+
 	/**
-	 *
+	 * Speichert den Pfad für die Dateien
+	 */
+	private String pfad;
+
+	/**
+	 * Speichert alle augen, die aus dem entsprechendem File gelesen wurden
 	 */
 	private Bauteil[] augen;
 
 	/**
-	 *
+	 * Speichert alle arme, die aus dem entsprechendem File gelesen wurden
 	 */
 	private Bauteil[] arme;
 
 	/**
-	 *
+	 * Speichert alle rumpf, die aus dem entsprechendem File gelesen wurden
 	 */
 	private Bauteil[] rumpf;
 
 	/**
-	 *
+	 * Speichert alle kettenl, die aus dem entsprechendem File gelesen wurden
 	 */
 	private Bauteil[] kettenl;
 
@@ -58,6 +64,9 @@ public class Lagermitarbeiter {
 		return this.kettenl;
 	}
 
+	public Lagermitarbeiter(String pfad) {
+		this.pfad = pfad;
+	}
 
 	public void pushRoboter(Roboter roboter) {
 

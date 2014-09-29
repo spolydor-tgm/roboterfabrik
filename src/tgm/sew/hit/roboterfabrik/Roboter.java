@@ -26,8 +26,10 @@ public class Roboter {
 	 * @param bauteile sind die Bauteile die zur Erstellung des Roboters benötigt werden.
 	 *                 Reihenfolge: Arm, Arm, Auge Auge, Rumpf, Kettenl
 	 */
-	public Roboter(Bauteil[] bauteile) {
+	public Roboter(Bauteil[] bauteile, int id) {
+		this.id = id;
 		this.verwBauteile = bauteile;
+		this.name = "Threadee-" + id;
 		int[] sort;
 		for (int x = 0; x < bauteile.length; x++) {
 			sort = bauteile[x].getSeriennr();
