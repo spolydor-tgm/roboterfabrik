@@ -43,4 +43,12 @@ public class Monteur extends Thread {
 	public Roboter getRoboter() {
 		return this.Roboterfertig;
 	}
+
+	/**
+	 *
+	 * @param bauteile
+	 */
+	public void setBauteile(Bauteil[] bauteile) {
+
+	}
 }

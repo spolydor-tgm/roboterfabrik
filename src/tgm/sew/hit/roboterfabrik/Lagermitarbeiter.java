@@ -66,9 +66,25 @@ public class Lagermitarbeiter {
 
 	public Lagermitarbeiter(String pfad) {
 		this.pfad = pfad;
+
+	}
+
+	public boolean writeFile(Roboter roboter) {
+
+		return true;
+	}
+
+	public boolean readFile() {
+
+		return true;
 	}
 
 	public void pushRoboter(Roboter roboter) {
 
+	}
+
+	public Bauteil[] getAlleBenoetigtenRoboterTeile() {
+		Bauteil[] alleTeile = new Bauteil[6];
+		alleTeile
 	}
 }

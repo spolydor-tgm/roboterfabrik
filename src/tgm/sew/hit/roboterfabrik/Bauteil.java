@@ -53,7 +53,8 @@ public class Bauteil {
 
 	/**
 	 *
-	 * @return 1 wenn das Bauteil ein arm ist, 2 wenn es ein auge ist, 3 wenn es ein rumpf ist, 4 wenn es ein kettenl ist und 0 wenn es keines der vorher angeführten Typen ist
+	 * @return 1 wenn das Bauteil ein arm ist, 2 wenn es ein auge ist, 3 wenn es ein rumpf ist,
+	 * 4 wenn es ein kettenl ist und 0 wenn es keines der vorher angeführten Typen ist
 	 */
 	public int isTyp() {
 		switch (this.typ) {
