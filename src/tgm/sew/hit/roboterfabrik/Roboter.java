@@ -1,4 +1,4 @@
-package tgm.sew.hit.roboterfabrik.Simulation;
+package tgm.sew.hit.roboterfabrik;
 
 import java.util.Arrays;
 
