@@ -30,6 +30,14 @@ public class Monteur extends Thread {
 
 	/**
 	 *
+	 * @param id des Monteurs (eindeutige Nummer)
+	 */
+	public Monteur(int id) {
+		this.id = id;
+	}
+
+	/**
+	 *
 	 * @return gibt den fertig zusammengebauten Roboter zurueck
 	 */
 	public Roboter getRoboter() {
