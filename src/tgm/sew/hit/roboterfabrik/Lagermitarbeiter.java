@@ -1,8 +1,6 @@
 package tgm.sew.hit.roboterfabrik;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 
 /**
  * Created by Stefan Polydor on 24.09.14.
@@ -134,11 +132,77 @@ public class Lagermitarbeiter {
 	}
 
 	/**
-	 * Liest alle Files (Auge, Arme, Rumpf
-	 * @return
+	 * Liest alle Files (Auge, Arme, Rumpf, Kettenl)
+	 * @return true wenn fertig
 	 */
 	public boolean readFile() {
+		BufferedReader in = null;
+		int count = 0;
+		int seriennr[];
+		try {
+			in = new BufferedReader(new FileReader(this.pfad + "arm.csv"));
+				while ( in.readLine() != null ) {
+				count++;
+			}
+			in = new BufferedReader(new FileReader(this.pfad + "arm.csv"));
+			this.arme = new Bauteil[count];
+			for (int x = 0; x < count; x++) {
+				seriennr = new int[20];
+				String[] split = in.readLine().split(",");
+				for (int y = 1; y < 20; y++)
+					seriennr[y] = Integer.parseInt(split[y]);
+				this.arme[x] = new Bauteil("arm", seriennr);
+			}
 
+			in = new BufferedReader(new FileReader(this.pfad + "auge.csv"));
+			while ( in.readLine() != null ) {
+				count++;
+			}
+			in = new BufferedReader(new FileReader(this.pfad + "auge.csv"));
+			this.arme = new Bauteil[count];
+			for (int x = 0; x < count; x++) {
+				seriennr = new int[20];
+				String[] split = in.readLine().split(",");
+				for (int y = 1; y < 20; y++)
+					seriennr[y] = Integer.parseInt(split[y]);
+				this.arme[x] = new Bauteil("auge", seriennr);
+			}
+
+			in = new BufferedReader(new FileReader(this.pfad + "rumpf.csv"));
+			while ( in.readLine() != null ) {
+				count++;
+			}
+			in = new BufferedReader(new FileReader(this.pfad + "rumpf.csv"));
+			this.arme = new Bauteil[count];
+			for (int x = 0; x < count; x++) {
+				seriennr = new int[20];
+				String[] split = in.readLine().split(",");
+				for (int y = 1; y < 20; y++)
+					seriennr[y] = Integer.parseInt(split[y]);
+				this.arme[x] = new Bauteil("rumpf", seriennr);
+			}
+
+			in = new BufferedReader(new FileReader(this.pfad + "kettenantrieb.csv"));
+			while ( in.readLine() != null ) {
+				count++;
+			}
+			in = new BufferedReader(new FileReader(this.pfad + "kettenantrieb.csv"));
+			this.arme = new Bauteil[count];
+			for (int x = 0; x < count; x++) {
+				seriennr = new int[20];
+				String[] split = in.readLine().split(",");
+				for (int y = 1; y < 20; y++)
+					seriennr[y] = Integer.parseInt(split[y]);
+				this.arme[x] = new Bauteil("kettenl", seriennr);
+			}
+
+		} catch (FileNotFoundException fnfe) {
+			fnfe.printStackTrace();
+		} catch (IOException ioe) {
+			ioe.printStackTrace();
+		} catch (IllegalAccessException iae) {
+			iae.printStackTrace();
+		}
 		return true;
 	}
 

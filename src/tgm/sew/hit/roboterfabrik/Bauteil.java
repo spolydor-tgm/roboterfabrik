@@ -6,7 +6,7 @@ package tgm.sew.hit.roboterfabrik;
 public class Bauteil {
 
 	/**
-	 * Ist der Typ des Bauteils. z.B.: "Arm"
+	 * Ist der Typ des Bauteils. z.B.: "arm"
 	 */
 	private String typ;
 
