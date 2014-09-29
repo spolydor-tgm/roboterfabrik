@@ -15,6 +15,8 @@ public class Monteur extends Thread {
 	 */
 	private Roboter Roboterfertig;
 
+	private Bauteil[] bauteile;
+
 
 	/**
 	 *
@@ -24,7 +26,12 @@ public class Monteur extends Thread {
 		return this.id;
 	}
 
+	/**
+	 * baut den Threadee zusammen
+	 * @return true wenn der Threadee fertig zusammengebaut ist
+	 */
 	public boolean bauen() {
+		Roboterfertig = new Roboter(this.bauteile, this.id);
 		return true;
 	}
 
@@ -49,6 +56,6 @@ public class Monteur extends Thread {
 	 * @param bauteile
 	 */
 	public void setBauteile(Bauteil[] bauteile) {
-
+		this.bauteile = bauteile;
 	}
 }

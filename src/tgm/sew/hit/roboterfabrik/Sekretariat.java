@@ -8,20 +8,20 @@ public class Sekretariat {
 	/**
 	 * Speichern der IDs der Monteure
 	 */
-	private int[] usedIDs;
+	private int[] uniqueIDs;
 
 	/**
 	 *
 	 * @return usedIDs gibt die
 	 */
-	public int[] getUsedIDs() {
-		return this.usedIDs;
+	public int[] getUniqueIDs() {
+		return this.uniqueIDs;
 	}
 
 	public Sekretariat(int anzahl) {
 		for (int x = 0; x < anzahl; ) {
-			this.usedIDs[x] = 100 + x;
-			System.out.println(usedIDs[x]);
+			this.uniqueIDs[x] = 100 + x;
+			System.out.println(uniqueIDs[x]);
 		}
 	}
 }

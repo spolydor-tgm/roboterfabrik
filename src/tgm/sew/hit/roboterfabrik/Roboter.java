@@ -6,6 +6,7 @@ import java.util.Arrays;
  * Created by Stefan Polydor on 24.09.14.
  */
 public class Roboter {
+
 	/**
 	 * Die ID des Roboters
 	 */

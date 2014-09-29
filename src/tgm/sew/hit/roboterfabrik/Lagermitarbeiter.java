@@ -6,6 +6,16 @@ package tgm.sew.hit.roboterfabrik;
 public class Lagermitarbeiter {
 
 	/**
+	 * Position im Array von den rumpf und kettenl, da von diesen immer 1 für einen Roboter benötigt werden
+	 */
+	private int standArray1 = 0;
+
+	/**
+	 * Position im Array von den Augen und Armen, da von diesen immer 2 für einen Roboter benötigt werden
+	 */
+	private int standArray2 = 0;
+
+	/**
 	 * Speichert den Pfad für die Dateien
 	 */
 	private String pfad;
@@ -64,27 +74,51 @@ public class Lagermitarbeiter {
 		return this.kettenl;
 	}
 
+	/**
+	 * Erzeugung einen Lagermitarbeiters
+	 * Lesen aller Files (Auge, Arme, Rumpf, Kettenl) und speichern in die Arrays
+	 * @param pfad fuer den Ort der Files
+	 */
 	public Lagermitarbeiter(String pfad) {
 		this.pfad = pfad;
 
 	}
 
+	/**
+	 * Schreibt den Fertigen Threadee in das File für die fertigen Threadee's
+	 * @param roboter der in das Threadee-file geschrieben wird
+	 * @return true wenn in das File geschrieben wurde
+	 */
 	public boolean writeFile(Roboter roboter) {
 
 		return true;
 	}
 
+	/**
+	 * Liest alle Files (Auge, Arme, Rumpf
+	 * @return
+	 */
 	public boolean readFile() {
 
 		return true;
 	}
 
-	public void pushRoboter(Roboter roboter) {
-
-	}
-
+	/**
+	 *
+	 * @return Bauteil[] gibt alle Bauteile für einen Roboter zurueck. Dieses Array muss nur noch dem Roboter Konstruktor übergeben
+	 * werden und dieser erzeugt ihn dann. Alle Teile sind schon in der richtigen Reihenfolge.
+	 */
 	public Bauteil[] getAlleBenoetigtenRoboterTeile() {
 		Bauteil[] alleTeile = new Bauteil[6];
-		alleTeile
+		alleTeile[1] = this.getArme()[this.standArray2];
+		alleTeile[2] = this.getArme()[this.standArray2 + 1];
+		alleTeile[3] = this.getAugen()[this.standArray2];
+		alleTeile[4] = this.getAugen()[this.standArray2 + 1];
+		this.standArray2++;
+		alleTeile[5] = this.getRumpf()[this.standArray1];
+		alleTeile[6] = this.getKettenl()[this.standArray1];
+		this.standArray1++;
+
+		return alleTeile;
 	}
 }
