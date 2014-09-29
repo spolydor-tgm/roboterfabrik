@@ -1,14 +1,13 @@
-package tgm.sew.hit.roboterfabrik;
+package tgm.sew.hit.roboterfabrik.Simulation;
 
 import org.apache.log4j.Logger;
 
-import java.io.*;
-import java.sql.SQLException;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.*;
-import tgm.sew.hit.roboterfabrik.CLI;
-import org.apache.log4j.FileAppender;
+import java.util.Date;
 
 public class Logging{
   /* Get actual class name to be printed on */

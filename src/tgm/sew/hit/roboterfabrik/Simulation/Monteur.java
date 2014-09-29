@@ -1,4 +1,4 @@
-package tgm.sew.hit.roboterfabrik;
+package tgm.sew.hit.roboterfabrik.Simulation;
 
 /**
  * Created by Stefan Polydor on 24.09.14.
