@@ -9,6 +9,7 @@ public class Roboter {
 
 	/**
 	 * Die ID des Roboters
+	 * Fortlaufend zu nummerieren
 	 */
 	private int id;
 
@@ -18,7 +19,7 @@ public class Roboter {
 	private Bauteil[] verwBauteile;
 
 	/**
-	 * Name des Roboters
+	 * Name des Roboters (Mitarbeiter + ID des Mitarbeiters)
 	 */
 	private String name;
 
@@ -26,11 +27,12 @@ public class Roboter {
 	 * Erstellt einen Roboter
 	 * @param bauteile sind die Bauteile die zur Erstellung des Roboters benötigt werden.
 	 *                 Reihenfolge: Arm, Arm, Auge Auge, Rumpf, Kettenl
+	 * @param name Der Name des Mitarbeiters (Mitarbeiter-ID123)
 	 */
-	public Roboter(Bauteil[] bauteile, int id) {
+	public Roboter(Bauteil[] bauteile, int id, String name) {
 		this.id = id;
 		this.verwBauteile = bauteile;
-		this.name = "Threadee-" + id;
+		this.name = name;
 		int[] sort;
 		for (int x = 0; x < bauteile.length; x++) {
 			sort = bauteile[x].getSeriennr();
@@ -45,6 +47,14 @@ public class Roboter {
 	 */
 	public int getId() {
 		return this.id;
+	}
+
+	/**
+	 *
+	 * @return gibt den Namen des Roboters zurueck
+	 */
+	public String getName() {
+		return this.name;
 	}
 
 	/**

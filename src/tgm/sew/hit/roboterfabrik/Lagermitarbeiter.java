@@ -1,9 +1,23 @@
 package tgm.sew.hit.roboterfabrik;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
 /**
  * Created by Stefan Polydor on 24.09.14.
  */
 public class Lagermitarbeiter {
+
+	/**
+	 * File für die fertigen Threadee's
+	 */
+	File fileThreadee;
+
+	/**
+	 * FileWriter für fileThreadee
+	 */
+	FileWriter fileWriter;
 
 	/**
 	 * Position im Array von den rumpf und kettenl, da von diesen immer 1 für einen Roboter benötigt werden
@@ -90,8 +104,33 @@ public class Lagermitarbeiter {
 	 * @return true wenn in das File geschrieben wurde
 	 */
 	public boolean writeFile(Roboter roboter) {
-
+		if (fileThreadee != null)
+			fileThreadee = new File(this.pfad + "auslieferung.csv");
+		try {
+			fileWriter = new FileWriter(this.fileThreadee, true);
+			fileWriter.write(roboterToString(roboter));
+			fileWriter.write(System.getProperty("line.seperator")); // Plattformunabhaengiger Zeilenumbruch
+			fileWriter.flush(); // Leeren des Streams
+			fileWriter.close(); // Writer Stream wird geschlossen
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		return true;
+	}
+
+	/**
+	 *
+	 * @param roboter Roboter dessen Informationen zu einem String geschrieben werden, um diese fertig in ein File zu schreiben
+	 * @return String fertig um diesen in das File zu schreiben
+	 */
+	public String roboterToString(Roboter roboter) {
+		String seriennr = "Threadee-ID" + roboter.getId() + ", " + roboter.getName() + ",";
+		for (int x = 0; x < roboter.getBauteile().length; x++) {
+			seriennr = seriennr + roboter.getBauteile()[x].getTyp() + ",";
+			for (int y = 0; y < roboter.getBauteile()[x].getSeriennr().length; y++)
+				seriennr = seriennr + roboter.getBauteile()[x].getSeriennr()[y] + ",";
+		}
+		return seriennr;
 	}
 
 	/**

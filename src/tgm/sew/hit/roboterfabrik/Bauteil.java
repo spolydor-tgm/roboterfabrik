@@ -33,6 +33,14 @@ public class Bauteil {
 
 	/**
 	 *
+	 * @return typ gibt den Typ (z.B.: Auge) zurueck
+	 */
+	public String getTyp() {
+		return this.typ;
+	}
+
+	/**
+	 *
 	 * @param typ gibt an, welche art dieser Bauteil ist. Gueltige eingaben: "arm", "auge", "rumpf", "kettenl"
 	 * @param seriennr
 	 * @throws IllegalAccessException
