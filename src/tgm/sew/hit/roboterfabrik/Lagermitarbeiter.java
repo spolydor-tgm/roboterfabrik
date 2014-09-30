@@ -43,14 +43,14 @@ public class Lagermitarbeiter {
 	private Bauteil[] arme;
 
 	/**
-	 * Speichert alle rumpf, die aus dem entsprechendem File gelesen wurden
+	 * Speichert alle ruempfe, die aus dem entsprechendem File gelesen wurden
 	 */
 	private Bauteil[] rumpf;
 
 	/**
-	 * Speichert alle kettenl, die aus dem entsprechendem File gelesen wurden
+	 * Speichert alle kettenantriebe, die aus dem entsprechendem File gelesen wurden
 	 */
-	private Bauteil[] kettenl;
+	private Bauteil[] kettenantrieb;
 
 
 	/**
@@ -82,8 +82,8 @@ public class Lagermitarbeiter {
 	 *
 	 * @return kettenl gibt die Ketten zur Weiterverwendung zurueck
 	 */
-	public Bauteil[] getKettenl() {
-		return this.kettenl;
+	public Bauteil[] getKettenantrieb() {
+		return this.kettenantrieb;
 	}
 
 	/**
@@ -193,7 +193,7 @@ public class Lagermitarbeiter {
 				String[] split = in.readLine().split(",");
 				for (int y = 1; y < 20; y++)
 					seriennr[y] = Integer.parseInt(split[y]);
-				this.arme[x] = new Bauteil("kettenl", seriennr);
+				this.arme[x] = new Bauteil("kettenantrieb", seriennr);
 			}
 
 		} catch (FileNotFoundException fnfe) {
@@ -219,7 +219,7 @@ public class Lagermitarbeiter {
 		alleTeile[4] = this.getAugen()[this.standArray2 + 1];
 		this.standArray2++;
 		alleTeile[5] = this.getRumpf()[this.standArray1];
-		alleTeile[6] = this.getKettenl()[this.standArray1];
+		alleTeile[6] = this.getKettenantrieb()[this.standArray1];
 		this.standArray1++;
 
 		return alleTeile;

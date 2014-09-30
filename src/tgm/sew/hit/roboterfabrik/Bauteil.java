@@ -41,21 +41,10 @@ public class Bauteil {
 
 	/**
 	 *
-	 * @param typ gibt an, welche art dieser Bauteil ist. Gueltige eingaben: "arm", "auge", "rumpf", "kettenl"
-	 * @param seriennr
-	 * @throws IllegalAccessException
+	 * @param typ gibt an, welche art dieser Bauteil ist. Gueltige eingaben: "arm", "auge", "rumpf", "kettenantrieb"
+	 * @param seriennr Nummer der Bauteile (z.B.: 1,3,2,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20)
 	 */
-	public Bauteil(String typ, int[] seriennr) throws IllegalAccessException {
-		this.seriennr = new int[20];
-		if (typ.equals("arm"))
-			seriennr = new int[2];
-		else if (typ.equals("auge"))
-			seriennr = new int[2];
-		else if (typ.equals("rumpf"))
-			seriennr = new int[1];
-		else if (typ.equals("kettenl"))
-			seriennr = new int[1];
-		else throw new IllegalAccessException();
+	public Bauteil(String typ, int[] seriennr) {
 		this.typ = typ;
 		this.seriennr = seriennr;
 	}
@@ -63,7 +52,7 @@ public class Bauteil {
 	/**
 	 *
 	 * @return 1 wenn das Bauteil ein arm ist, 2 wenn es ein auge ist, 3 wenn es ein rumpf ist,
-	 * 4 wenn es ein kettenl ist und 0 wenn es keines der vorher angeführten Typen ist
+	 * 4 wenn es ein kettenantrieb ist und 0 wenn es keines der vorher angeführten Typen ist
 	 */
 	public int isTyp() {
 		switch (this.typ) {
@@ -73,7 +62,7 @@ public class Bauteil {
 				return 2;
 			case "rumpf":
 				return 3;
-			case "kettenl":
+			case "kettenantrieb":
 				return 4;
 		}
 		return 0;
