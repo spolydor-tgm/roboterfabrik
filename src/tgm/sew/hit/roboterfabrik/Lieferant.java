@@ -25,11 +25,14 @@ public class Lieferant {
 	 */
 
 	public Lieferant(String verzeichnis){
+
 		this.verzeichnis=verzeichnis;
+		new File(verzeichnis).mkdirs();
 		bauteilarten[0]="arm";
 		bauteilarten[1]="auge";
 		bauteilarten[2]="rumpf";
 		bauteilarten[3]="kettenantrieb";
+
 	}
 
 	/**
@@ -71,10 +74,15 @@ public class Lieferant {
 		ArrayList<String> inhalt = new ArrayList<String>();
 		try {
 			Scanner scanner = new Scanner(filezumeinlesen);
+			if (filezumeinlesen.canRead() == false){
+				filezumeinlesen.createNewFile();
+			}
 			while(scanner.hasNextLine()){
 				inhalt.add(scanner.nextLine());
 			}
 		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		this.inhalt=inhalt;
