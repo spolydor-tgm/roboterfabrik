@@ -14,11 +14,12 @@ public class Controller {
 		 //logverzeichnis(commandlineinterface.getLager());
 
 		Lagermitarbeiter lagermit = new Lagermitarbeiter(commandlineinterface.getLager());
-		Lieferant lieferant = new Lieferant(commandlineinterface.getLieferant());
+		Lieferant lieferant = new Lieferant(commandlineinterface.getLager());
 		TimerWD timer= new TimerWD(commandlineinterface.getZeit());
 
 		int[] ids = sekretariat.getUniqueIDs();
 
+		lieferant.liefern(commandlineinterface.getLieferant());
 		for(int i = 0;i<commandlineinterface.getMonteur()+1;i++){
 			monteurLinkedList.add(new Monteur(ids[i]));
 			monteurLinkedList.get(i).start();
@@ -28,7 +29,7 @@ public class Controller {
 
 
 		do {
-
+			lieferant.liefern(commandlineinterface.getLieferant());
 			for (int i = 0; i < commandlineinterface.getMonteur() + 1; i++) {
 				Roboter fertigrobo = monteurLinkedList.get(i).getRoboter();
 				lagermit.writeFile(fertigrobo);
