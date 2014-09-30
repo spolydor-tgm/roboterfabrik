@@ -24,9 +24,8 @@ public class Controller {
 			monteurLinkedList.add(new Monteur(ids[i]));
 			monteurLinkedList.get(i).start();
 			monteurLinkedList.get(i).setBauteile(lagermit.getAlleBenoetigtenRoboterTeile());
-			monteurLinkedList.get(i).bauen();
+			monteurLinkedList.get(i).bauen(sekretariat.getId());
 		}
-
 
 		do {
 			lieferant.liefern(commandlineinterface.getLieferant());
@@ -34,13 +33,8 @@ public class Controller {
 				Roboter fertigrobo = monteurLinkedList.get(i).getRoboter();
 				lagermit.writeFile(fertigrobo);
 				monteurLinkedList.get(i).setBauteile(lagermit.getAlleBenoetigtenRoboterTeile());
-				monteurLinkedList.get(i).bauen();
+				monteurLinkedList.get(i).bauen(sekretariat.getId());
 			}
 		}while( timer.tokeepRunning() == true);
-
-
-
 	}
-
-
 }
