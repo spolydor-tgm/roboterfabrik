@@ -26,22 +26,33 @@ public class BauteilTest {
 	}
 
 	@Test
-	public void testGetTypArm() {
-		assertEquals("arm", this.bauteil[0].getTyp());
+	public void testSetSeriennr() {
+		this.bauteil[0].setSeriennr(new int[]{2, 1, 3, 5, 7, 4, 6, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20});
+		assertArrayEquals(new int[]{2, 1, 3, 5, 7, 4, 6, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}, this.bauteil[0].getSeriennr());
+	}
+
+	@Test
+	public void testIsTypArm() {
+		assertEquals(1, this.bauteil[0].isTyp());
 	}
 
 	@Test
 	public void testIsTypAuge() {
-		assertEquals("auge", this.bauteil[1].getTyp());
+		assertEquals(2, this.bauteil[1].isTyp());
 	}
 
 	@Test
 	public void testIsTypRumpf() {
-		assertEquals("rumpf", this.bauteil[2].getTyp());
+		assertEquals(3, this.bauteil[2].isTyp());
 	}
 
 	@Test
 	public void testIsTypKettenl() {
-		assertEquals("kettenl", this.bauteil[3].getTyp());
+		assertEquals(4, this.bauteil[3].isTyp());
+	}
+
+	@Test
+	public void testGetTyp() {
+		assertEquals("arm", this.bauteil[0].getTyp());
 	}
 }
