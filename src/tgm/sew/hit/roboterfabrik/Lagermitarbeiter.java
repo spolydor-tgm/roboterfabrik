@@ -200,8 +200,6 @@ public class Lagermitarbeiter {
 			fnfe.printStackTrace();
 		} catch (IOException ioe) {
 			ioe.printStackTrace();
-		} catch (IllegalAccessException iae) {
-			iae.printStackTrace();
 		}
 		return true;
 	}

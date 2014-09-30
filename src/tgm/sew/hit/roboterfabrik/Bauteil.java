@@ -33,6 +33,14 @@ public class Bauteil {
 
 	/**
 	 *
+	 * @param seriennr setzt die sortierte seriennummer in der Klasse Lagermitarbeiter
+	 */
+	public void setSeriennr(int[] seriennr) {
+		this.seriennr = seriennr;
+	}
+
+	/**
+	 *
 	 * @param typ gibt an, welche art dieser Bauteil ist. Gueltige eingaben: "arm", "auge", "rumpf", "kettenantrieb"
 	 * @param seriennr Nummer der Bauteile (z.B.: 1,3,2,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20)
 	 */
