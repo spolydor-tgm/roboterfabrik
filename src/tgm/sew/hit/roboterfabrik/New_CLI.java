@@ -21,10 +21,10 @@ public class New_CLI {
 	private Option op_mont = new Option("m","monteure",true, "Anzahl der anfaenglichen Monteure.");
 	private Option op_zeit = new Option("r","laufzeit",true, "Zeit in der das Programm abgearbeitet wird."); //r als runtime
 
-	private static String lager;
-	private static int lieferant;
-	private static int monteure;
-	private static int zeit;
+	private String lager;
+	private int lieferant;
+	private int monteure;
+	private int zeit;
 	
 	public New_CLI(String[] args) {
 		this.args = args;
@@ -84,23 +84,7 @@ public class New_CLI {
 					System.out.println("Fehlende Angabe: \"laufzeit\": " +op_logs.getDescription());
 				}
 		} catch (ParseException e) {
-			
+			System.out.println("Something went terribly wrong");
 		}
-	}
-	
-	public static String getLager() {
-		return lager;
-	}
-	
-	public static int getLieferant() {
-		return lieferant;
-	}
-	
-	public static int getMonteure() {
-		return monteure;
-	}
-	
-	public static int getZeit() {
-		return zeit;
 	}
 }
