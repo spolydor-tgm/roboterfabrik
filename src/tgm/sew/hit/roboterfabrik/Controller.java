@@ -1,7 +1,6 @@
 package tgm.sew.hit.roboterfabrik;
 
 import java.util.LinkedList;
-import tgm.sew.hit.roboterfabrik.*;
 
 /**
  * Created by Patrick on 29.09.14.
@@ -9,19 +8,20 @@ import tgm.sew.hit.roboterfabrik.*;
 public class Controller {
 
 	public static void main(String[] args) {
-		
+
+		new New_CLI(args).parse();
 		LinkedList<Monteur> monteurLinkedList = new LinkedList<Monteur>();
-		Sekretariat sekretariat = new Sekretariat(commandlineinterface.getMonteur());
+		Sekretariat sekretariat = new Sekretariat(New_CLI.getMonteure());
 		 //logverzeichnis(commandlineinterface.getLager());
 
-		Lagermitarbeiter lagermit = new Lagermitarbeiter(commandlineinterface.getLager());
-		Lieferant lieferant = new Lieferant(commandlineinterface.getLager());
-		TimerWD timer= new TimerWD(commandlineinterface.getZeit());
+		Lagermitarbeiter lagermit = new Lagermitarbeiter(New_CLI.getLager());
+		Lieferant lieferant = new Lieferant(New_CLI.getLager());
+		TimerWD timer= new TimerWD(New_CLI.getZeit());
 
 		int[] ids = sekretariat.getUniqueIDs();
 
-		lieferant.liefern(commandlineinterface.getLieferant());
-		for(int i = 0;i<commandlineinterface.getMonteur()+1;i++){
+		lieferant.liefern(New_CLI.getLieferant());
+		for(int i = 0;i<New_CLI.getMonteure()+1;i++){
 			monteurLinkedList.add(new Monteur(ids[i]));
 			monteurLinkedList.get(i).start();
 			monteurLinkedList.get(i).setBauteile(lagermit.getAlleBenoetigtenRoboterTeile());
@@ -29,8 +29,8 @@ public class Controller {
 		}
 
 		do {
-			lieferant.liefern(commandlineinterface.getLieferant());
-			for (int i = 0; i < commandlineinterface.getMonteur() + 1; i++) {
+			lieferant.liefern(New_CLI.getLieferant());
+			for (int i = 0; i < New_CLI.getMonteure() + 1; i++) {
 				Roboter fertigrobo = monteurLinkedList.get(i).getRoboter();
 				lagermit.writeFile(fertigrobo);
 				monteurLinkedList.get(i).setBauteile(lagermit.getAlleBenoetigtenRoboterTeile());
