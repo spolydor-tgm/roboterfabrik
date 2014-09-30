@@ -10,6 +10,7 @@ import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 
+
 public class New_CLI {
 	private String[] args = null;
 	private Options options = new Options();
@@ -20,10 +21,10 @@ public class New_CLI {
 	private Option op_mont = new Option("m","monteure",true, "Anzahl der anfaenglichen Monteure.");
 	private Option op_zeit = new Option("r","laufzeit",true, "Zeit in der das Programm abgearbeitet wird."); //r als runtime
 
-	private String lager;
-	private int lieferant;
-	private int monteure;
-	private int zeit;
+	private static String lager;
+	private static int lieferant;
+	private static int monteure;
+	private static int zeit;
 	
 	public New_CLI(String[] args) {
 		this.args = args;
@@ -82,19 +83,19 @@ public class New_CLI {
 		}
 	}
 	
-	public String getLager() {
+	public static String getLager() {
 		return lager;
 	}
 	
-	public int getLieferant() {
+	public static int getLieferant() {
 		return lieferant;
 	}
 	
-	public int getMonteure() {
+	public static int getMonteure() {
 		return monteure;
 	}
 	
-	public int getZeit() {
+	public static int getZeit() {
 		return zeit;
 	}
 }

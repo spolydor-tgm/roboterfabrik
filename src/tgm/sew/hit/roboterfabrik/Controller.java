@@ -1,6 +1,7 @@
 package tgm.sew.hit.roboterfabrik;
 
 import java.util.LinkedList;
+import tgm.sew.hit.roboterfabrik.*;
 
 /**
  * Created by Patrick on 29.09.14.
@@ -8,7 +9,7 @@ import java.util.LinkedList;
 public class Controller {
 
 	public static void main(String[] args) {
-		CLI commandlineinterface = new CLI();
+		
 		LinkedList<Monteur> monteurLinkedList = new LinkedList<Monteur>();
 		Sekretariat sekretariat = new Sekretariat(commandlineinterface.getMonteur());
 		 //logverzeichnis(commandlineinterface.getLager());
