@@ -150,7 +150,7 @@ public class Lagermitarbeiter {
 			for (int x = 0; x < count; x++) {
 				seriennr = new int[20];
 				String[] split = in.readLine().split(",");
-				for (int y = 1; y < 20; y++)
+				for (int y = 1; y <= 20; y++)
 					seriennr[y] = Integer.parseInt(split[y]);
 				this.arme[x] = new Bauteil("arm", seriennr);
 			}
@@ -165,7 +165,7 @@ public class Lagermitarbeiter {
 			for (int x = 0; x < count; x++) {
 				seriennr = new int[20];
 				String[] split = in.readLine().split(",");
-				for (int y = 1; y < 20; y++)
+				for (int y = 1; y <= 20; y++)
 					seriennr[y] = Integer.parseInt(split[y]);
 				this.arme[x] = new Bauteil("auge", seriennr);
 			}
@@ -180,7 +180,7 @@ public class Lagermitarbeiter {
 			for (int x = 0; x < count; x++) {
 				seriennr = new int[20];
 				String[] split = in.readLine().split(",");
-				for (int y = 1; y < 20; y++)
+				for (int y = 1; y <= 20; y++)
 					seriennr[y] = Integer.parseInt(split[y]);
 				this.arme[x] = new Bauteil("rumpf", seriennr);
 			}
@@ -195,7 +195,7 @@ public class Lagermitarbeiter {
 			for (int x = 0; x < count; x++) {
 				seriennr = new int[20];
 				String[] split = in.readLine().split(",");
-				for (int y = 1; y < 20; y++)
+				for (int y = 1; y <= 20; y++)
 					seriennr[y] = Integer.parseInt(split[y]);
 				this.arme[x] = new Bauteil("kettenantrieb", seriennr);
 			}
