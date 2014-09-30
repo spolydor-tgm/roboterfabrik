@@ -52,6 +52,12 @@ public class BauteilTest {
 	}
 
 	@Test
+	public void testIsTypFalsch() {
+		Bauteil bt = new Bauteil("haha", new int[]{1, 2, 3, 5, 7, 4, 6, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20});
+		assertEquals(0, bt.isTyp());
+	}
+
+	@Test
 	public void testGetTyp() {
 		assertEquals("arm", this.bauteil[0].getTyp());
 	}
