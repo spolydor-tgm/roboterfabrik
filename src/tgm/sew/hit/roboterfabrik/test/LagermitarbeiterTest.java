@@ -3,6 +3,9 @@ package tgm.sew.hit.roboterfabrik.test;
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * Created by Stefan Polydor on 30.09.14.
+ */
 public class LagermitarbeiterTest {
 
 	@Before

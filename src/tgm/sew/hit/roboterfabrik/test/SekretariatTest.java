@@ -7,6 +7,9 @@ import tgm.sew.hit.roboterfabrik.Sekretariat;
 import static junit.framework.TestCase.assertEquals;
 import static org.junit.Assert.assertArrayEquals;
 
+/**
+ * Created by Stefan Polydor on 30.09.14.
+ */
 public class SekretariatTest {
 	private Sekretariat sekretariat;
 

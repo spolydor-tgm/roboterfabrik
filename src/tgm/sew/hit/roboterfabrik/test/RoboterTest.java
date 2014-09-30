@@ -7,6 +7,9 @@ import tgm.sew.hit.roboterfabrik.Roboter;
 
 import static junit.framework.TestCase.assertEquals;
 
+/**
+ * Created by Stefan Polydor on 30.09.14.
+ */
 public class RoboterTest {
 
 	private Roboter roboter;
@@ -23,6 +26,7 @@ public class RoboterTest {
 		verwBauteil[5] = new Bauteil("kettenantrieb", new int[]{1, 2, 3, 5, 7, 4, 6, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20});
 		this.roboter = new Roboter(verwBauteil, 1, "Mitarbeiter-ID123");
 	}
+
 	@Test
 	public void testGetId() throws Exception {
 		assertEquals(this.roboter.getId(), 1);
