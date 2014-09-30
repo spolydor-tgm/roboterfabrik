@@ -3,6 +3,7 @@ package tgm.sew.hit.roboterfabrik;
 import org.apache.commons.cli.*;
 
 public class CLI {
+	
 	private Object zahl = new Integer(0);
 	
 	private CommandLineParser Parser = new BasicParser();
@@ -73,9 +74,4 @@ public class CLI {
 	public int getZeit() {
 		return Integer.parseInt(lvCmd.getOptionValue("r"));
 	}
-
-	public static void main(String[] args) {
-		CLI test = new CLI();
-	}
-	
 }
