@@ -10,7 +10,6 @@ import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 
-
 public class New_CLI {
 	private String[] args = null;
 	private Options options = new Options();
