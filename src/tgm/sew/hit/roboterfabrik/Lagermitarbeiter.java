@@ -211,13 +211,13 @@ public class Lagermitarbeiter {
 	 */
 	public Bauteil[] getAlleBenoetigtenRoboterTeile() {
 		Bauteil[] alleTeile = new Bauteil[6];
-		alleTeile[1] = this.getArme()[this.standArray2];
-		alleTeile[2] = this.getArme()[this.standArray2 + 1];
-		alleTeile[3] = this.getAugen()[this.standArray2];
-		alleTeile[4] = this.getAugen()[this.standArray2 + 1];
+		alleTeile[0] = this.getArme()[this.standArray2];
+		alleTeile[1] = this.getArme()[this.standArray2 + 1];
+		alleTeile[2] = this.getAugen()[this.standArray2];
+		alleTeile[3] = this.getAugen()[this.standArray2 + 1];
 		this.standArray2++;
-		alleTeile[5] = this.getRumpf()[this.standArray1];
-		alleTeile[6] = this.getKettenantrieb()[this.standArray1];
+		alleTeile[4] = this.getRumpf()[this.standArray1];
+		alleTeile[5] = this.getKettenantrieb()[this.standArray1];
 		this.standArray1++;
 
 		return alleTeile;
