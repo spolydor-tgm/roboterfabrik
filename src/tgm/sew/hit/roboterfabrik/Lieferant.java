@@ -13,10 +13,16 @@ import java.util.Scanner;
  * Created by Patrick on 29.09.14.
  */
 public class Lieferant {
-	ArrayList<String> inhalt = new ArrayList<String>();
-	String verzeichnis="";
-	String[] bauteilarten=new String[4];
-	ArrayList<Integer> usedprng = new ArrayList<Integer>();
+
+
+	ArrayList<String> inhalt = new ArrayList<String>(); //used part numbers
+	String verzeichnis=""; //path to storage
+	String[] bauteilarten=new String[4]; // here are the parts that can be delivered
+
+	/**
+	 *  This constructor adds the storage path and generates the parts that can be "delivered"
+	 * @param verzeichnis where is the storage
+	 */
 
 	public Lieferant(String verzeichnis){
 		this.verzeichnis=verzeichnis;
@@ -26,6 +32,11 @@ public class Lieferant {
 		bauteilarten[3]="kettenantrieb";
 	}
 
+	/**
+	 *  This class "delivers" new parts for the roboter.
+	 *  One deliverer "delivers" one randomly choosen part (the part will be written in the part.csv file)
+	 * @param anzahl how many Lieferanten will be needed
+	 */
 
 	public void liefern(int anzahl ){
 
@@ -48,7 +59,15 @@ public class Lieferant {
 		}
 	}
 
-	public void readFile(File filezumeinlesen,String name){
+	/**
+	 *
+	 * I need this class to read in all used Numbers so that the generator can generate unique numbers
+	 *
+	 * @param filezumeinlesen
+	 * @param name
+	 */
+
+	private void readFile(File filezumeinlesen,String name){
 		ArrayList<String> inhalt = new ArrayList<String>();
 		try {
 			Scanner scanner = new Scanner(filezumeinlesen);
@@ -62,7 +81,14 @@ public class Lieferant {
 
 	}
 
-	public String generateGanzzahlen(String typ){
+	/**
+	 *  Here I generate unique part numbers
+	 *
+	 * @param typ for what build part do you need the numbers
+	 * @return returns Numbers to put behind the robot elements
+	 */
+
+	private String generateGanzzahlen(String typ){
 		boolean uniqe=true;
 		String ganzzahl="";
 		do {
