@@ -12,7 +12,7 @@ public class Controller {
 
 		new New_CLI(args).parse();
 
-
+		//changessss
 		LinkedList<Monteur> monteurLinkedList = new LinkedList<Monteur>();
 		Sekretariat sekretariat = new Sekretariat(Controller.getAnzahlMonteure(args));
 		 //logverzeichnis(commandlineinterface.getLager());
