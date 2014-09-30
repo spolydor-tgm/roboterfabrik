@@ -8,27 +8,27 @@ import java.io.*;
 public class Lagermitarbeiter {
 
 	/**
-	 * File für die fertigen Threadee's
+	 * File fï¿½r die fertigen Threadee's
 	 */
 	File fileThreadee;
 
 	/**
-	 * FileWriter für fileThreadee
+	 * FileWriter fï¿½r fileThreadee
 	 */
 	FileWriter fileWriter;
 
 	/**
-	 * Position im Array von den rumpf und kettenl, da von diesen immer 1 für einen Roboter benötigt werden
+	 * Position im Array von den rumpf und kettenl, da von diesen immer 1 fï¿½r einen Roboter benï¿½tigt werden
 	 */
 	private int standArray1 = 0;
 
 	/**
-	 * Position im Array von den Augen und Armen, da von diesen immer 2 für einen Roboter benötigt werden
+	 * Position im Array von den Augen und Armen, da von diesen immer 2 fï¿½r einen Roboter benï¿½tigt werden
 	 */
 	private int standArray2 = 0;
 
 	/**
-	 * Speichert den Pfad für die Dateien
+	 * Speichert den Pfad fï¿½r die Dateien
 	 */
 	private String pfad;
 
@@ -97,7 +97,7 @@ public class Lagermitarbeiter {
 	}
 
 	/**
-	 * Schreibt den Fertigen Threadee in das File für die fertigen Threadee's
+	 * Schreibt den Fertigen Threadee in das File fï¿½r die fertigen Threadee's
 	 * @param roboter der in das Threadee-file geschrieben wird
 	 * @return true wenn in das File geschrieben wurde
 	 */
@@ -206,7 +206,7 @@ public class Lagermitarbeiter {
 
 	/**
 	 *
-	 * @return Bauteil[] gibt alle Bauteile für einen Roboter zurueck. Dieses Array muss nur noch dem Roboter Konstruktor übergeben
+	 * @return Bauteil[] gibt alle Bauteile fï¿½r einen Roboter zurueck. Dieses Array muss nur noch dem Roboter Konstruktor ï¿½bergeben
 	 * werden und dieser erzeugt ihn dann. Alle Teile sind schon in der richtigen Reihenfolge.
 	 */
 	public Bauteil[] getAlleBenoetigtenRoboterTeile() {

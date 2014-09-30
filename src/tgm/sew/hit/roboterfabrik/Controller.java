@@ -9,19 +9,29 @@ public class Controller {
 
 	public static void main(String[] args) {
 
+
 		new New_CLI(args).parse();
+
+
 		LinkedList<Monteur> monteurLinkedList = new LinkedList<Monteur>();
-		Sekretariat sekretariat = new Sekretariat(New_CLI.getMonteure());
+		Sekretariat sekretariat = new Sekretariat(Controller.getAnzahlMonteure(args));
 		 //logverzeichnis(commandlineinterface.getLager());
 
-		Lagermitarbeiter lagermit = new Lagermitarbeiter(New_CLI.getLager());
-		Lieferant lieferant = new Lieferant(New_CLI.getLager());
-		TimerWD timer= new TimerWD(New_CLI.getZeit());
+		Lagermitarbeiter lagermit = new Lagermitarbeiter(Controller.getLagerVerzeichnis(args));
+		Lieferant lieferant = new Lieferant(Controller.getLagerVerzeichnis(args));
+		TimerWD timer= new TimerWD(Controller.getLaufzeit(args));
+
+
 
 		int[] ids = sekretariat.getUniqueIDs();
-
-		lieferant.liefern(New_CLI.getLieferant());
-		for(int i = 0;i<New_CLI.getMonteure()+1;i++){
+		/*
+		System.out.println(test.getLager());
+		System.out.println(test.getZeit());
+		System.out.println(test.getLieferant());
+		System.out.println(test.getMonteure());
+		*/
+		lieferant.liefern(Controller.getAnzahlLieferanten(args));
+		for(int i = 0;i<Controller.getAnzahlMonteure(args);i++){
 			monteurLinkedList.add(new Monteur(ids[i]));
 			monteurLinkedList.get(i).start();
 			monteurLinkedList.get(i).setBauteile(lagermit.getAlleBenoetigtenRoboterTeile());
@@ -29,13 +39,59 @@ public class Controller {
 		}
 
 		do {
-			lieferant.liefern(New_CLI.getLieferant());
-			for (int i = 0; i < New_CLI.getMonteure() + 1; i++) {
+			lieferant.liefern(Controller.getAnzahlLieferanten(args));
+			for (int i = 0; i < Controller.getAnzahlMonteure(args); i++) {
 				Roboter fertigrobo = monteurLinkedList.get(i).getRoboter();
 				lagermit.writeFile(fertigrobo);
 				monteurLinkedList.get(i).setBauteile(lagermit.getAlleBenoetigtenRoboterTeile());
 				monteurLinkedList.get(i).bauen(sekretariat.getId());
 			}
 		}while( timer.tokeepRunning() == true);
+	}
+
+	private static String getLagerVerzeichnis(String[] args){
+		String lager= "--lager";
+		for(int i = 0;i<args.length;i++){
+			if(lager.equals(args[i])){
+				return args[i+1];
+			}
+
+		}
+		return "fehler";
+
+	}
+
+	private static int getAnzahlLieferanten(String[] args){
+		String lieferanten= "--lieferanten";
+		for(int i = 0;i<args.length;i++){
+			if(lieferanten.equals(args[i])){
+				return Integer.parseInt(args[i+1]);
+			}
+
+		}
+		return 0;
+
+	}
+	private static int getAnzahlMonteure(String[] args){
+		String monteure= "--monteure";
+		for(int i = 0;i<args.length;i++){
+			if(monteure.equals(args[i])){
+				return Integer.parseInt(args[i+1]);
+			}
+
+		}
+		return 0;
+
+	}
+	private static int getLaufzeit(String[] args){
+		String laufzeit= "--laufzeit";
+		for(int i = 0;i<args.length;i++){
+			if(laufzeit.equals(args[i])){
+				return Integer.parseInt(args[i+1]);
+			}
+
+		}
+		return 0;
+
 	}
 }
