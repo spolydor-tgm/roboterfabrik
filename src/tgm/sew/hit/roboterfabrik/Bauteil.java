@@ -25,14 +25,6 @@ public class Bauteil {
 
 	/**
 	 *
-	 * @param seriennr ist die seriennr die fuer das Bauteil gespeicher wird
-	 */
-	public void setSeriennr(int[] seriennr) {
-		this.seriennr = seriennr;
-	}
-
-	/**
-	 *
 	 * @return typ gibt den Typ (z.B.: Auge) zurueck
 	 */
 	public String getTyp() {
