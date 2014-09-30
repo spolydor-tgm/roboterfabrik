@@ -103,7 +103,7 @@ public class Lagermitarbeiter {
 	 */
 	public boolean writeFile(Roboter roboter) {
 		if (fileThreadee != null)
-			fileThreadee = new File(this.pfad + "auslieferung.csv");
+			fileThreadee = new File(this.pfad + "/auslieferung.csv");
 		try {
 			fileWriter = new FileWriter(this.fileThreadee, true);
 			fileWriter.write(roboterToString(roboter));
@@ -140,11 +140,11 @@ public class Lagermitarbeiter {
 		int count = 0;
 		int seriennr[];
 		try {
-			in = new BufferedReader(new FileReader(this.pfad + "arm.csv"));
+			in = new BufferedReader(new FileReader(this.pfad + "/arm.csv"));
 				while ( in.readLine() != null ) {
 				count++;
 			}
-			in = new BufferedReader(new FileReader(this.pfad + "arm.csv"));
+			in = new BufferedReader(new FileReader(this.pfad + "/arm.csv"));
 			this.arme = new Bauteil[count];
 			for (int x = 0; x < count; x++) {
 				seriennr = new int[20];
@@ -154,11 +154,11 @@ public class Lagermitarbeiter {
 				this.arme[x] = new Bauteil("arm", seriennr);
 			}
 
-			in = new BufferedReader(new FileReader(this.pfad + "auge.csv"));
+			in = new BufferedReader(new FileReader(this.pfad + "/auge.csv"));
 			while ( in.readLine() != null ) {
 				count++;
 			}
-			in = new BufferedReader(new FileReader(this.pfad + "auge.csv"));
+			in = new BufferedReader(new FileReader(this.pfad + "/auge.csv"));
 			this.arme = new Bauteil[count];
 			for (int x = 0; x < count; x++) {
 				seriennr = new int[20];
@@ -168,11 +168,11 @@ public class Lagermitarbeiter {
 				this.arme[x] = new Bauteil("auge", seriennr);
 			}
 
-			in = new BufferedReader(new FileReader(this.pfad + "rumpf.csv"));
+			in = new BufferedReader(new FileReader(this.pfad + "/rumpf.csv"));
 			while ( in.readLine() != null ) {
 				count++;
 			}
-			in = new BufferedReader(new FileReader(this.pfad + "rumpf.csv"));
+			in = new BufferedReader(new FileReader(this.pfad + "/rumpf.csv"));
 			this.arme = new Bauteil[count];
 			for (int x = 0; x < count; x++) {
 				seriennr = new int[20];
@@ -182,11 +182,11 @@ public class Lagermitarbeiter {
 				this.arme[x] = new Bauteil("rumpf", seriennr);
 			}
 
-			in = new BufferedReader(new FileReader(this.pfad + "kettenantrieb.csv"));
+			in = new BufferedReader(new FileReader(this.pfad + "/kettenantrieb.csv"));
 			while ( in.readLine() != null ) {
 				count++;
 			}
-			in = new BufferedReader(new FileReader(this.pfad + "kettenantrieb.csv"));
+			in = new BufferedReader(new FileReader(this.pfad + "/kettenantrieb.csv"));
 			this.arme = new Bauteil[count];
 			for (int x = 0; x < count; x++) {
 				seriennr = new int[20];
