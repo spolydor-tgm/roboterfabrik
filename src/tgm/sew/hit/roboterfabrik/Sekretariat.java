@@ -28,7 +28,7 @@ public class Sekretariat {
 	 * @param anzahl wieviele Monteure es gibt, dadurch wird angegeben wieviele ID's erzeugt werden muessen
 	 */
 	public Sekretariat(int anzahl) {
-		for (int x = 0; x < anzahl; ) {
+		for (int x = 0; x < anzahl; x++) {
 			this.uniqueIDs[x] = 100 + x;
 			System.out.println(uniqueIDs[x]);
 		}
