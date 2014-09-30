@@ -5,6 +5,7 @@ import tgm.sew.hit.roboterfabrik.Logging;
 import org.apache.commons.cli.BasicParser;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
+import org.apache.commons.cli.GnuParser;
 import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
@@ -27,6 +28,12 @@ public class New_CLI {
 	
 	public New_CLI(String[] args) {
 		this.args = args;
+		
+		op_lager.isRequired();
+		op_logs.isRequired();
+		op_liefer.isRequired();
+		op_mont.isRequired();
+		op_zeit.isRequired();
 
 		options.addOption(op_lager);
 		options.addOption(op_logs);
@@ -37,43 +44,42 @@ public class New_CLI {
 	}
 
 	public void parse() {
-		CommandLineParser parser = new BasicParser();
-		CommandLine cmd = null;
+		CommandLineParser parser = new GnuParser();
+		CommandLine cmd;
 
 		try {
 			cmd = parser.parse(options, args);
-			
 				// Verarbeitung vom Lager-Verzeichniss
-				if (cmd.hasOption("w")) {
-					lager = op_lager.toString();
+				if (cmd.hasOption('w')) {
+					lager = cmd.getOptionValue("op_lager");
 				} else {
 					System.out.println("Fehlende Angabe: \"lager\": " +op_lager.getDescription());
 				}
 				
 				//Verarbeitung vom Logs-Verzeichniss
-				if(cmd.hasOption("l")) {
+				if(cmd.hasOption('l')) {
 					Logging.verzFestlegen(op_logs.toString());
 				} else {
 					System.out.println("Fehlende Angabe: \"logs\": " +op_logs.getDescription());
 				}
 				
 				//Verarbeitung der Lieferantenanzahl
-				if(cmd.hasOption("s")) {
-					lieferant = Integer.parseInt(op_liefer.toString());
+				if(cmd.hasOption('s')) {
+					lieferant = Integer.parseInt(cmd.getOptionValue("op_lager"));
 				} else {
 					System.out.println("Fehlende Angabe: \"lieferant\": " +op_liefer.getDescription());
 				}
 				
 				//Verarbeitung der Monteure-Anzahl
-				if(cmd.hasOption("m")) {
-					monteure = Integer.parseInt(op_mont.toString());
+				if(cmd.hasOption('m')) {
+					monteure = Integer.parseInt(cmd.getOptionValue("op_lager"));
 				} else {
 					System.out.println("Fehlende Angabe: \"monteure\": " +op_mont.getDescription());
 				}
 				
 				//Verarbeitung der Runtime
-				if(cmd.hasOption("r")) {
-					zeit = Integer.parseInt(op_zeit.toString());
+				if(cmd.hasOption('r')) {
+					zeit = Integer.parseInt(cmd.getOptionValue("op_lager"));
 				} else {
 					System.out.println("Fehlende Angabe: \"laufzeit\": " +op_logs.getDescription());
 				}
