@@ -46,6 +46,7 @@ public class Bauteil {
 	 * @throws IllegalAccessException
 	 */
 	public Bauteil(String typ, int[] seriennr) throws IllegalAccessException {
+		this.seriennr = new int[20];
 		if (typ.equals("arm"))
 			seriennr = new int[2];
 		else if (typ.equals("auge"))
