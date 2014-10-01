@@ -125,7 +125,7 @@ public class Lagermitarbeiter {
 	}
 
 	/**
-	 *
+	 * Liest alle Files aus und speichert sie in den entsprechenden Arrays
 	 */
 	private void read() {
 		int count;
@@ -154,9 +154,12 @@ public class Lagermitarbeiter {
 						break;
 				}
 				count = 0;
-				scanner = new Scanner(new File(this.pfad, pfad));
-				while (scanner.hasNextLine())
+				String endPfad = this.pfad + pfad;
+				scanner = new Scanner(new File(endPfad));
+				System.out.println(endPfad);
+				while (scanner.hasNextLine() && new File(endPfad).canRead()){
 					count++;
+				}
 				switch (x) {
 					case 0: this.arme = new Bauteil[count];
 						break;
@@ -168,9 +171,10 @@ public class Lagermitarbeiter {
 						break;
 				}
 				scanner.close();
-				scanner = new Scanner(new File(this.pfad, pfad));
+				scanner = new Scanner(new File(endPfad));
 				for (int xx = 0; xx < count; xx++) {
 					seriennr = new int[20];
+					String a = scanner.nextLine();
 					String[] split = scanner.nextLine().split(",");
 					for (int y = 1; y <= 20; y++)
 						seriennr[y - 1] = Integer.parseInt(split[y]);
@@ -202,9 +206,9 @@ public class Lagermitarbeiter {
 
 	/**
 	 *
-	 * @param bauteil
-	 * @param position
-	 * @return
+	 * @param bauteil Bauteil von dem die seriennr zu einem String wird.
+	 * @param position welche seriennr er zu einem String macht
+	 * @return den fertigen String
 	 */
 	public static String bauteileSeriennrToString(Bauteil[] bauteil, int position) {
 		String ret = "";
