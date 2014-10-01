@@ -43,7 +43,7 @@ public class Controller {
 					monteurLinkedList.get(i).bauen(sekretariat.getId());
 					fertigeroboter[i] = monteurLinkedList.get(i).getRoboter();
 				} catch (ArrayIndexOutOfBoundsException e) {
-					for (int o = 0; o < Controller.getAnzahlMonteure(args); o++) {
+					for (int o = 0; o < i-1; o++) {
 						lagermit.writeFile(fertigeroboter[o]);
 						exceptionthrown = true;
 						if(timer.tokeepRunning() == false){
