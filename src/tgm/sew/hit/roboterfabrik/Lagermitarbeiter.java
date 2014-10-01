@@ -129,6 +129,10 @@ public class Lagermitarbeiter {
 	 * Liest alle Files aus und speichert sie in den entsprechenden Arrays
 	 */
 	private void read() {
+		this.arme=null;
+		this.augen=null;
+		this.rumpf=null;
+		this.kettenantrieb=null;
 		int count;
 		int seriennr[];
 		String pfad = "";

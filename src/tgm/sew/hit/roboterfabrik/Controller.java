@@ -33,13 +33,22 @@ public class Controller {
 		//lieferant.liefern(Controller.getAnzahlLieferanten(args));
 
 		lagermit.readFile();
-
+		Roboter[] fertigeroboter= new Roboter[Controller.getAnzahlMonteure(args)];
 		for(int i = 0;i<Controller.getAnzahlMonteure(args);i++){
+			try {
+				monteurLinkedList.add(new Monteur(ids[i]));
+				monteurLinkedList.get(i).start();
+				monteurLinkedList.get(i).setBauteile(lagermit.getAlleBenoetigtenRoboterTeile());
+				lagermit.readFile();
+				monteurLinkedList.get(i).bauen(sekretariat.getId());
+				fertigeroboter[i]= monteurLinkedList.get(i).getRoboter();
+			}catch (ArrayIndexOutOfBoundsException e){
+				System.out.println(i);
+				for(int o = 0;o<Controller.getAnzahlMonteure(args);o++){
+					lagermit.writeFile(fertigeroboter[o]);
+				}
+			}
 
-			monteurLinkedList.add(new Monteur(ids[i]));
-			monteurLinkedList.get(i).start();
-			monteurLinkedList.get(i).setBauteile(lagermit.getAlleBenoetigtenRoboterTeile());
-			monteurLinkedList.get(i).bauen(sekretariat.getId());
 		}
 
 		do {
@@ -49,6 +58,7 @@ public class Controller {
 			for (int i = 0; i < Controller.getAnzahlMonteure(args); i++) {
 				Roboter fertigrobo = monteurLinkedList.get(i).getRoboter();
 				lagermit.writeFile(fertigrobo);
+				lagermit.readFile();
 				monteurLinkedList.get(i).setBauteile(lagermit.getAlleBenoetigtenRoboterTeile());
 				monteurLinkedList.get(i).bauen(sekretariat.getId());
 
