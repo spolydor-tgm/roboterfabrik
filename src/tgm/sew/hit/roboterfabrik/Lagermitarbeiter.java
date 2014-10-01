@@ -157,6 +157,16 @@ public class Lagermitarbeiter {
 				scanner = new Scanner(new File(this.pfad, pfad));
 				while (scanner.hasNextLine())
 					count++;
+				switch (x) {
+					case 0: this.arme = new Bauteil[count];
+						break;
+					case 1: this.augen = new Bauteil[count];
+						break;
+					case 2: this.rumpf = new Bauteil[count];
+						break;
+					case 3: this.kettenantrieb = new Bauteil[count];
+						break;
+				}
 				scanner.close();
 				scanner = new Scanner(new File(this.pfad, pfad));
 				for (int xx = 0; xx < count; xx++) {
@@ -171,7 +181,7 @@ public class Lagermitarbeiter {
 							break;
 						case 2: this.rumpf[xx] = new Bauteil(speichernName, seriennr);
 							break;
-						case 3: this.rumpf[xx] = new Bauteil(speichernName, seriennr);
+						case 3: this.kettenantrieb[xx] = new Bauteil(speichernName, seriennr);
 							break;
 					}
 				}
