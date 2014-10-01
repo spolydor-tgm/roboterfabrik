@@ -1,6 +1,10 @@
 package tgm.sew.hit.roboterfabrik;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Scanner;
 
 /**
  * Created by Stefan Polydor on 24.09.14.
@@ -136,81 +140,81 @@ public class Lagermitarbeiter {
 	 * @return true wenn fertig
 	 */
 	public boolean readFile() {
-		BufferedReader in = null;
+		// BufferedReader in = null;
 		int count = 0;
 		int seriennr[];
 		String pfad = this.pfad + "/arm.csv";
 		try {
-			in = new BufferedReader(new FileReader(pfad));
-				while ( in.readLine() != null ) {
+			Scanner scanner = new Scanner(new File(pfad));
+			// in = new BufferedReader(new FileReader(pfad));
+			while (scanner.hasNextLine()) {
 				count++;
 			}
-			in.close();
-			in = new BufferedReader(new FileReader(pfad));
+			scanner.close();
+			scanner = new Scanner(new File(pfad));
 			this.arme = new Bauteil[count];
 			for (int x = 0; x < count; x++) {
 				seriennr = new int[20];
-				String[] split = in.readLine().split(",");
+				String[] split = scanner.nextLine().split(",");
 				for (int y = 1; y <= 20; y++)
-					seriennr[y-1] = Integer.parseInt(split[y]);
+					seriennr[y - 1] = Integer.parseInt(split[y]);
 				this.arme[x] = new Bauteil("arm", seriennr);
 			}
+			scanner.close();
 
-			in.close();
 			pfad = this.pfad + "/auge.csv";
-			in = new BufferedReader(new FileReader(pfad));
-			while ( in.readLine() != null ) {
+			scanner = new Scanner(new File(pfad));
+			while (scanner.hasNextLine()) {
 				count++;
 			}
-			in.close();
-			in = new BufferedReader(new FileReader(pfad));
+			scanner.close();
+			scanner = new Scanner(new File(pfad));
 			this.arme = new Bauteil[count];
 			for (int x = 0; x < count; x++) {
 				seriennr = new int[20];
-				String[] split = in.readLine().split(",");
+				String[] split = scanner.nextLine().split(",");
 				for (int y = 1; y <= 20; y++)
-					seriennr[y-1] = Integer.parseInt(split[y]);
+					seriennr[y - 1] = Integer.parseInt(split[y]);
 				this.arme[x] = new Bauteil("auge", seriennr);
 			}
+			scanner.close();
 
-			in.close();
 			pfad = this.pfad + "/rumpf.csv";
-			in = new BufferedReader(new FileReader(pfad));
-			while ( in.readLine() != null ) {
+			scanner = new Scanner(new File(pfad));
+			while (scanner.hasNextLine()) {
 				count++;
 			}
-			in.close();
-			in = new BufferedReader(new FileReader(pfad));
+			scanner.close();
+			scanner = new Scanner(new File(pfad));
 			this.arme = new Bauteil[count];
 			for (int x = 0; x < count; x++) {
 				seriennr = new int[20];
-				String[] split = in.readLine().split(",");
+				String[] split = scanner.nextLine().split(",");
 				for (int y = 1; y <= 20; y++)
-					seriennr[y-1] = Integer.parseInt(split[y]);
+					seriennr[y - 1] = Integer.parseInt(split[y]);
 				this.arme[x] = new Bauteil("rumpf", seriennr);
 			}
+			scanner.close();
 
-			in.close();
 			pfad = this.pfad + "/kettenantrieb.csv";
-			in = new BufferedReader(new FileReader(pfad));
-			while ( in.readLine() != null ) {
+			scanner = new Scanner(new File(pfad));
+			while (scanner.hasNextLine()) {
 				count++;
 			}
-			in.close();
-			in = new BufferedReader(new FileReader(pfad));
+			scanner.close();
+			scanner = new Scanner(new File(pfad));
 			this.arme = new Bauteil[count];
 			for (int x = 0; x < count; x++) {
 				seriennr = new int[20];
-				String[] split = in.readLine().split(",");
+				String[] split = scanner.nextLine().split(",");
 				for (int y = 1; y <= 20; y++)
-					seriennr[y-1] = Integer.parseInt(split[y]);
+					seriennr[y - 1] = Integer.parseInt(split[y]);
 				this.arme[x] = new Bauteil("kettenantrieb", seriennr);
 			}
+			scanner.close();
 
 		} catch (FileNotFoundException fnfe) {
 			fnfe.printStackTrace();
-		} catch (IOException ioe) {
-			ioe.printStackTrace();
 		}
 		return true;
 	}
