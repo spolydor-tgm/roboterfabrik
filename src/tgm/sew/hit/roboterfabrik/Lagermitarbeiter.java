@@ -114,6 +114,7 @@ public class Lagermitarbeiter {
 	 *
 	 * @param roboter Roboter dessen Informationen zu einem String geschrieben werden, um diese fertig in ein File zu schreiben
 	 * @return String fertig um diesen in das File zu schreiben
+	 * @throws java.lang.NullPointerException
 	 */
 	public String roboterToString(Roboter roboter) throws NullPointerException{
 		String seriennr = "Threadee-ID" + roboter.getId() + ", " + roboter.getName() + ",";
@@ -226,6 +227,7 @@ public class Lagermitarbeiter {
 	 *
 	 * @return Bauteil[] gibt alle Bauteile f�r einen Roboter zurueck. Dieses Array muss nur noch dem Roboter Konstruktor �bergeben
 	 * werden und dieser erzeugt ihn dann. Alle Teile sind schon in der richtigen Reihenfolge.
+	 * @throws java.lang.ArrayIndexOutOfBoundsException
 	 */
 	public Bauteil[] getAlleBenoetigtenRoboterTeile() throws ArrayIndexOutOfBoundsException {
 		Bauteil[] alleTeile = new Bauteil[6];
