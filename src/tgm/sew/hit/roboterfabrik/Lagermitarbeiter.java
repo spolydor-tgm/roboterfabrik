@@ -223,7 +223,7 @@ public class Lagermitarbeiter {
 	 * @return Bauteil[] gibt alle Bauteile f�r einen Roboter zurueck. Dieses Array muss nur noch dem Roboter Konstruktor �bergeben
 	 * werden und dieser erzeugt ihn dann. Alle Teile sind schon in der richtigen Reihenfolge.
 	 */
-	public Bauteil[] getAlleBenoetigtenRoboterTeile() throws NullPointerException {
+	public Bauteil[] getAlleBenoetigtenRoboterTeile() throws ArrayIndexOutOfBoundsException {
 		Bauteil[] alleTeile = new Bauteil[6];
 		alleTeile[0] = this.getArme()[1];
 		alleTeile[1] = this.getArme()[2];
