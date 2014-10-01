@@ -96,13 +96,13 @@ public class Lagermitarbeiter {
 	 * @return true wenn in das File geschrieben wurde
 	 */
 	public boolean writeFile(Roboter roboter) {
-		if (fileThreadee != null)
-			fileThreadee = new File(this.pfad + "auslieferung.csv");
+		if (fileThreadee == null)
+			fileThreadee = new File(this.pfad + "/auslieferung.csv");
 		try {
-			fileWriter = new FileWriter(new File(this.pfad + "auslieferung.csv"));
+			fileWriter = new FileWriter(new File(this.pfad + "/auslieferung.csv"), true);
 			fileWriter.write("" + roboterToString(roboter));
-			fileWriter.write("\n");
-			// fileWriter.write("" + System.getProperty("line.seperator")); // Plattformunabhaengiger Zeilenumbruch
+			fileWriter.write("\r");
+			// fileWriter.write("" + System.lineSeparator()); // Plattformunabhaengiger Zeilenumbruch
 			fileWriter.flush(); // Leeren des Streams
 			fileWriter.close(); // Writer Stream wird geschlossen
 		} catch (IOException e) {
@@ -249,17 +249,20 @@ public class Lagermitarbeiter {
 						teile = this.getKettenantrieb();
 						break;
 				}
-				//fileWriter = new FileWriter(this.pfad + pfad, true);
 				fileWriter = new FileWriter(new File(this.pfad + pfad));
 				for (int y = 2; y < teile.length && x < 2; y++) {
 					fileWriter.write("" + teile[y].getTyp() + Lagermitarbeiter.bauteileSeriennrToString(teile, y));
-					fileWriter.write("\n");
-					//fileWriter.write("" + System.getProperty("line.seperator")); // Plattformunabhaengiger Zeilenumbruch
+					// fileWriter.write("\n");
+					//fileWriter.write("" + System.lineSeparator()); // Plattformunabhaengiger Zeilenumbruch
+					if (y != teile.length -1)
+						fileWriter.write("\r");
 				}
 				for (int y = 1; y < teile.length && x > 1; y++) {
 					fileWriter.write(""+teile[y].getTyp() + Lagermitarbeiter.bauteileSeriennrToString(teile, y));
-					fileWriter.write("\n");
-					// fileWriter.write(""+System.getProperty("line.seperator")); // Plattformunabhaengiger Zeilenumbruch
+					// fileWriter.write("\n");
+					// fileWriter.write(""+System.lineSeparator()); // Plattformunabhaengiger Zeilenumbruch
+					if (y != teile.length -1)
+						fileWriter.write("\r");
 				}
 				fileWriter.flush(); // Leeren des Streams
 				fileWriter.close(); // Writer Stream wird geschlossen
