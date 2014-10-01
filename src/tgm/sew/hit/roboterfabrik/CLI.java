@@ -46,7 +46,7 @@ public class CLI {
 	/**
 	 * This method takes the arguments from the console and pareses them into the args array, so it's accessible somewhere else.
 	 */
-	public void parse() {
+	public void parse() throws ParseException {
 		CommandLineParser parser = new GnuParser();
 		CommandLine cmd;
 
