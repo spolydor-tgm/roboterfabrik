@@ -156,7 +156,6 @@ public class Lagermitarbeiter {
 				count = 0;
 				String endPfad = this.pfad + pfad;
 				scanner = new Scanner(new File(endPfad));
-				System.out.println(endPfad);
 				while (scanner.hasNextLine() && new File(endPfad).canRead()){
 					count++;
 				}
