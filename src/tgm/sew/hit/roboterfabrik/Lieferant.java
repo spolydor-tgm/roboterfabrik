@@ -53,17 +53,14 @@ public class Lieferant {
 			this.readFile(file_speichern,bauteilarten[randomNum]);
 			try {
 				fileWriter = new FileWriter(file_speichern,true);
-				if(i == 0){
-					fileWriter.write(System.getProperty("line.separator"));
-				}
-				fileWriter.write(bauteilartenforspeichern[randomNum]+this.generateGanzzahlen(bauteilarten[randomNum]));
 				fileWriter.write(System.getProperty("line.separator"));
+				fileWriter.write(bauteilartenforspeichern[randomNum]+","+this.generateGanzzahlen(bauteilarten[randomNum]));
 				fileWriter.flush();
 				fileWriter.close();
 			} catch (FileNotFoundException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
+
+			} catch (IOException es) {
+
 			}
 		}
 	}
