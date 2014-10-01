@@ -225,12 +225,12 @@ public class Lagermitarbeiter {
 	 */
 	public Bauteil[] getAlleBenoetigtenRoboterTeile() throws ArrayIndexOutOfBoundsException {
 		Bauteil[] alleTeile = new Bauteil[6];
-		alleTeile[0] = this.getArme()[1];
-		alleTeile[1] = this.getArme()[2];
-		alleTeile[2] = this.getAugen()[1];
-		alleTeile[3] = this.getAugen()[2];
-		alleTeile[4] = this.getRumpf()[1];
-		alleTeile[5] = this.getKettenantrieb()[1];
+		alleTeile[0] = this.getArme()[0];
+		alleTeile[1] = this.getArme()[1];
+		alleTeile[2] = this.getAugen()[0];
+		alleTeile[3] = this.getAugen()[1];
+		alleTeile[4] = this.getRumpf()[0];
+		alleTeile[5] = this.getKettenantrieb()[0];
 		try {
 			String pfad = "";
 			Bauteil[] teile = null;
