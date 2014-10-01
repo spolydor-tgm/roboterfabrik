@@ -85,6 +85,7 @@ public class Controller {
 
 			}
 		}while( timer.tokeepRunning() == true);
+		System.out.println("nach10sec");
 	}
 
 	private static String getLagerVerzeichnis(String[] args){

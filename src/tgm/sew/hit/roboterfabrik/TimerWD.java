@@ -3,14 +3,15 @@ package tgm.sew.hit.roboterfabrik;
 /**
  * Created by Patrick on 29.09.14.
  */
-class TimerWD implements Watchdog{
+class TimerWD extends Thread{
 	private boolean keeprunning=true;
 	private long length=0;
-	private Thread sleeper = new Thread();
+	private Thread sleeper;
 
 	public TimerWD(long length){
 		this.length = length;
-		sleeper.start();
+
+		this.start();
 	}
 
 	public boolean tokeepRunning(){
@@ -20,13 +21,13 @@ class TimerWD implements Watchdog{
 		}else{return false;}
 
 	}
-
+	@Override
 	public void run(){
 		try {
 			sleeper.sleep(length);
 			this.keeprunning=false;
 		} catch (InterruptedException e) {
-			e.printStackTrace();
+
 		}
 
 	}
