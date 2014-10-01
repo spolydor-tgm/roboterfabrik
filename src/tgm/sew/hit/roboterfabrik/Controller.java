@@ -1,13 +1,14 @@
 package tgm.sew.hit.roboterfabrik;
 
 import java.util.LinkedList;
+import org.apache.commons.cli.*;
 
 /**
  * Created by Patrick on 29.09.14.
  */
 public class Controller {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ParseException{
 
 
 		new CLI(args).parse();
