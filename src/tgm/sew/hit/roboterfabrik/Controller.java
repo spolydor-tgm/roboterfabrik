@@ -31,6 +31,7 @@ public class Controller {
 		System.out.println(test.getMonteure());
 		*/
 		lieferant.liefern(Controller.getAnzahlLieferanten(args));
+		lagermit.readFile();
 		for(int i = 0;i<Controller.getAnzahlMonteure(args);i++){
 			monteurLinkedList.add(new Monteur(ids[i]));
 			monteurLinkedList.get(i).start();

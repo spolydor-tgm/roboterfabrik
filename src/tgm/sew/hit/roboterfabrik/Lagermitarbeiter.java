@@ -151,7 +151,7 @@ public class Lagermitarbeiter {
 				seriennr = new int[20];
 				String[] split = in.readLine().split(",");
 				for (int y = 1; y <= 20; y++)
-					seriennr[y] = Integer.parseInt(split[y]);
+					seriennr[y-1] = Integer.parseInt(split[y]);
 				this.arme[x] = new Bauteil("arm", seriennr);
 			}
 
@@ -166,7 +166,7 @@ public class Lagermitarbeiter {
 				seriennr = new int[20];
 				String[] split = in.readLine().split(",");
 				for (int y = 1; y <= 20; y++)
-					seriennr[y] = Integer.parseInt(split[y]);
+					seriennr[y-1] = Integer.parseInt(split[y]);
 				this.arme[x] = new Bauteil("auge", seriennr);
 			}
 
@@ -181,7 +181,7 @@ public class Lagermitarbeiter {
 				seriennr = new int[20];
 				String[] split = in.readLine().split(",");
 				for (int y = 1; y <= 20; y++)
-					seriennr[y] = Integer.parseInt(split[y]);
+					seriennr[y-1] = Integer.parseInt(split[y]);
 				this.arme[x] = new Bauteil("rumpf", seriennr);
 			}
 
@@ -196,7 +196,7 @@ public class Lagermitarbeiter {
 				seriennr = new int[20];
 				String[] split = in.readLine().split(",");
 				for (int y = 1; y <= 20; y++)
-					seriennr[y] = Integer.parseInt(split[y]);
+					seriennr[y-1] = Integer.parseInt(split[y]);
 				this.arme[x] = new Bauteil("kettenantrieb", seriennr);
 			}
 
@@ -219,10 +219,10 @@ public class Lagermitarbeiter {
 		alleTeile[1] = this.getArme()[this.standArray2 + 1];
 		alleTeile[2] = this.getAugen()[this.standArray2];
 		alleTeile[3] = this.getAugen()[this.standArray2 + 1];
-		this.standArray2++;
+		//this.standArray2++;
 		alleTeile[4] = this.getRumpf()[this.standArray1];
 		alleTeile[5] = this.getKettenantrieb()[this.standArray1];
-		this.standArray1++;
+		//this.standArray1++;
 
 		return alleTeile;
 	}
