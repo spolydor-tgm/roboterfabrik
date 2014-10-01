@@ -53,6 +53,7 @@ public class Lieferant {
 			this.readFile(file_speichern,bauteilarten[randomNum]);
 			try {
 				fileWriter = new FileWriter(file_speichern,true);
+				if(file_speichern.length() > 5)
 				fileWriter.write(System.getProperty("line.separator"));
 				fileWriter.write(bauteilartenforspeichern[randomNum]+","+this.generateGanzzahlen(bauteilarten[randomNum]));
 				fileWriter.flush();

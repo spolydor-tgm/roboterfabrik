@@ -261,14 +261,14 @@ public class Lagermitarbeiter {
 					// fileWriter.write("\n");
 					//fileWriter.write("" + System.lineSeparator()); // Plattformunabhaengiger Zeilenumbruch
 					if (y != teile.length -1)
-						fileWriter.write("\r");
+						fileWriter.write(System.getProperty("line.separator"));
 				}
 				for (int y = 1; y < teile.length && x > 1; y++) {
 					fileWriter.write(""+teile[y].getTyp() + Lagermitarbeiter.bauteileSeriennrToString(teile, y));
 					// fileWriter.write("\n");
 					// fileWriter.write(""+System.lineSeparator()); // Plattformunabhaengiger Zeilenumbruch
 					if (y != teile.length -1)
-						fileWriter.write("\r");
+						fileWriter.write(System.getProperty("line.separator"));
 				}
 				fileWriter.flush(); // Leeren des Streams
 				fileWriter.close(); // Writer Stream wird geschlossen

@@ -71,15 +71,17 @@ public class Controller {
 			lastmonteurstarted=i+1;
 		}while(exceptionthrown == true);
 		do {
+			try {
+				lieferant.liefern(Controller.getAnzahlLieferanten(args));
+				for (int i = 0; i < Controller.getAnzahlMonteure(args); i++) {
+					Roboter fertigrobo = monteurLinkedList.get(i).getRoboter();
+					lagermit.writeFile(fertigrobo);
+					lagermit.readFile();
+					monteurLinkedList.get(i).setBauteile(lagermit.getAlleBenoetigtenRoboterTeile());
+					monteurLinkedList.get(i).bauen(sekretariat.getId());
 
-
-			//lieferant.liefern(Controller.getAnzahlLieferanten(args));
-			for (int i = 0; i < Controller.getAnzahlMonteure(args); i++) {
-				Roboter fertigrobo = monteurLinkedList.get(i).getRoboter();
-				lagermit.writeFile(fertigrobo);
-				lagermit.readFile();
-				monteurLinkedList.get(i).setBauteile(lagermit.getAlleBenoetigtenRoboterTeile());
-				monteurLinkedList.get(i).bauen(sekretariat.getId());
+				}
+			}catch (ArrayIndexOutOfBoundsException s){
 
 			}
 		}while( timer.tokeepRunning() == true);
