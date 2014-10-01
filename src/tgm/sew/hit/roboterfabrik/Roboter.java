@@ -14,7 +14,7 @@ public class Roboter {
 	private int id;
 
 	/**
-	 * Die verwendeten Bauteile für den Roboter
+	 * Die verwendeten Bauteile fuer den Roboter
 	 */
 	private Bauteil[] verwBauteile;
 
@@ -25,7 +25,7 @@ public class Roboter {
 
 	/**
 	 * Erstellt einen Roboter
-	 * @param bauteile sind die Bauteile die zur Erstellung des Roboters benötigt werden.
+	 * @param bauteile sind die Bauteile die zur Erstellung des Roboters benoetigt werden.
 	 *                 Reihenfolge: Arm, Arm, Auge Auge, Rumpf, Kettenl
 	 * @param name Der Name des Mitarbeiters (Mitarbeiter-ID123)
 	 */
