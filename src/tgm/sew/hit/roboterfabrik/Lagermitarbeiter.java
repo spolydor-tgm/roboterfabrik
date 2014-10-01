@@ -138,19 +138,19 @@ public class Lagermitarbeiter {
 				switch (x) {
 					case 0:
 						pfad = "/arm.csv";
-						speichernName = "arm";
+						speichernName = "Arm";
 						break;
 					case 1:
 						pfad = "/auge.csv";
-						speichernName = "auge";
+						speichernName = "Auge";
 						break;
 					case 2:
 						pfad = "/rumpf.csv";
-						speichernName = "rumpf";
+						speichernName = "Rumpf";
 						break;
 					case 3:
 						pfad = "/kettenantrieb.csv";
-						speichernName = "kettenantrieb";
+						speichernName = "Kettenantrieb";
 						break;
 				}
 				count = 0;
@@ -164,7 +164,6 @@ public class Lagermitarbeiter {
 					String[] split = scanner.nextLine().split(",");
 					for (int y = 1; y <= 20; y++)
 						seriennr[y - 1] = Integer.parseInt(split[y]);
-					this.arme[xx] = new Bauteil("arm", seriennr);
 					switch (x) {
 						case 0: this.arme[xx] = new Bauteil(speichernName, seriennr);
 							break;

@@ -51,18 +51,18 @@ public class Bauteil {
 
 	/**
 	 *
-	 * @return 1 wenn das Bauteil ein arm ist, 2 wenn es ein auge ist, 3 wenn es ein rumpf ist,
-	 * 4 wenn es ein kettenantrieb ist und 0 wenn es keines der vorher angeführten Typen ist
+	 * @return 1 wenn das Bauteil ein Arm ist, 2 wenn es ein Auge ist, 3 wenn es ein Rumpf ist,
+	 * 4 wenn es ein Kettenantrieb ist und 0 wenn es keines der vorher angeführten Typen ist
 	 */
 	public int isTyp() {
 		switch (this.typ) {
-			case "arm":
+			case "Arm":
 				return 1;
-			case "auge":
+			case "Auge":
 				return 2;
-			case "rumpf":
+			case "Rumpf":
 				return 3;
-			case "kettenantrieb":
+			case "Kettenantrieb":
 				return 4;
 		}
 		return 0;
