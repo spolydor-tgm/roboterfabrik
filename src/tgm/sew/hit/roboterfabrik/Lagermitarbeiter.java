@@ -14,12 +14,12 @@ public class Lagermitarbeiter {
 	/**
 	 * File fuer die fertigen Threadee's
 	 */
-	File fileThreadee;
+	private File fileThreadee;
 
 	/**
 	 * FileWriter fuer fileThreadee
 	 */
-	FileWriter fileWriter;
+	private FileWriter fileWriter;
 
 	/**
 	 * Speichert den Pfad fuer die Dateien
