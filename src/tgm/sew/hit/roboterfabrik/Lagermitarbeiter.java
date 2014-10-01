@@ -97,11 +97,12 @@ public class Lagermitarbeiter {
 	 */
 	public boolean writeFile(Roboter roboter) {
 		if (fileThreadee != null)
-			fileThreadee = new File(this.pfad, "auslieferung.csv");
+			fileThreadee = new File(this.pfad + "auslieferung.csv");
 		try {
-			fileWriter = new FileWriter(this.fileThreadee, true);
-			fileWriter.write(roboterToString(roboter));
-			fileWriter.write(System.getProperty("line.seperator")); // Plattformunabhaengiger Zeilenumbruch
+			fileWriter = new FileWriter(new File(this.pfad + "auslieferung.csv"));
+			fileWriter.write("" + roboterToString(roboter));
+			fileWriter.write("\n");
+			// fileWriter.write("" + System.getProperty("line.seperator")); // Plattformunabhaengiger Zeilenumbruch
 			fileWriter.flush(); // Leeren des Streams
 			fileWriter.close(); // Writer Stream wird geschlossen
 		} catch (IOException e) {
@@ -156,7 +157,8 @@ public class Lagermitarbeiter {
 				count = 0;
 				String endPfad = this.pfad + pfad;
 				scanner = new Scanner(new File(endPfad));
-				while (scanner.hasNextLine() && new File(endPfad).canRead()){
+				while (scanner.hasNextLine() && new File(endPfad).canRead()) {
+					scanner.nextLine();
 					count++;
 				}
 				switch (x) {
@@ -173,7 +175,6 @@ public class Lagermitarbeiter {
 				scanner = new Scanner(new File(endPfad));
 				for (int xx = 0; xx < count; xx++) {
 					seriennr = new int[20];
-					String a = scanner.nextLine();
 					String[] split = scanner.nextLine().split(",");
 					for (int y = 1; y <= 20; y++)
 						seriennr[y - 1] = Integer.parseInt(split[y]);
@@ -222,7 +223,7 @@ public class Lagermitarbeiter {
 	 * @return Bauteil[] gibt alle Bauteile f�r einen Roboter zurueck. Dieses Array muss nur noch dem Roboter Konstruktor �bergeben
 	 * werden und dieser erzeugt ihn dann. Alle Teile sind schon in der richtigen Reihenfolge.
 	 */
-	public Bauteil[] getAlleBenoetigtenRoboterTeile() throws ArrayIndexOutOfBoundsException{
+	public Bauteil[] getAlleBenoetigtenRoboterTeile() throws NullPointerException {
 		Bauteil[] alleTeile = new Bauteil[6];
 		alleTeile[0] = this.getArme()[1];
 		alleTeile[1] = this.getArme()[2];
@@ -248,10 +249,17 @@ public class Lagermitarbeiter {
 						teile = this.getKettenantrieb();
 						break;
 				}
-				fileWriter = new FileWriter(this.pfad + pfad, true);
-				for (int y = 0; y < teile.length; y++) {
-					fileWriter.write(teile[y].getTyp() + Lagermitarbeiter.bauteileSeriennrToString(teile, y));
-					fileWriter.write(System.getProperty("line.seperator")); // Plattformunabhaengiger Zeilenumbruch
+				//fileWriter = new FileWriter(this.pfad + pfad, true);
+				fileWriter = new FileWriter(new File(this.pfad + pfad));
+				for (int y = 2; y < teile.length && x < 2; y++) {
+					fileWriter.write("" + teile[y].getTyp() + Lagermitarbeiter.bauteileSeriennrToString(teile, y));
+					fileWriter.write("\n");
+					//fileWriter.write("" + System.getProperty("line.seperator")); // Plattformunabhaengiger Zeilenumbruch
+				}
+				for (int y = 1; y < teile.length && x > 1; y++) {
+					fileWriter.write(""+teile[y].getTyp() + Lagermitarbeiter.bauteileSeriennrToString(teile, y));
+					fileWriter.write("\n");
+					// fileWriter.write(""+System.getProperty("line.seperator")); // Plattformunabhaengiger Zeilenumbruch
 				}
 				fileWriter.flush(); // Leeren des Streams
 				fileWriter.close(); // Writer Stream wird geschlossen
