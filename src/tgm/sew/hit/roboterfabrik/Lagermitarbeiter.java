@@ -12,17 +12,17 @@ import java.util.Scanner;
 public class Lagermitarbeiter {
 
 	/**
-	 * File f�r die fertigen Threadee's
+	 * File fuer die fertigen Threadee's
 	 */
 	File fileThreadee;
 
 	/**
-	 * FileWriter f�r fileThreadee
+	 * FileWriter fuer fileThreadee
 	 */
 	FileWriter fileWriter;
 
 	/**
-	 * Speichert den Pfad f�r die Dateien
+	 * Speichert den Pfad fuer die Dateien
 	 */
 	private String pfad;
 
