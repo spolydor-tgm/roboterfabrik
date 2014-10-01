@@ -10,17 +10,13 @@ import java.util.LinkedList;
 public class Controller {
 
 	public static void main(String[] args) throws ParseException{
-
-
 		new CLI(args).parse();
-
-		//changessss
 		LinkedList<Monteur> monteurLinkedList = new LinkedList<Monteur>();
 		Sekretariat sekretariat = new Sekretariat(Controller.getAnzahlMonteure(args));
 		 //logverzeichnis(commandlineinterface.getLager());
 
 		Lagermitarbeiter lagermit = new Lagermitarbeiter(Controller.getLagerVerzeichnis(args));
-		//Lieferant lieferant = new Lieferant(Controller.getLagerVerzeichnis(args));
+		Lieferant lieferant = new Lieferant(Controller.getLagerVerzeichnis(args));
 
 		TimerWD timer= new TimerWD(Controller.getLaufzeit(args));
 
@@ -30,27 +26,35 @@ public class Controller {
 
 
 
-		//lieferant.liefern(Controller.getAnzahlLieferanten(args));
+		lieferant.liefern(Controller.getAnzahlLieferanten(args));
+		boolean exceptionthrown =false;
+		do {
+			lieferant.liefern(Controller.getAnzahlLieferanten(args));
+			lagermit.readFile();
+			Roboter[] fertigeroboter = new Roboter[Controller.getAnzahlMonteure(args)];
+			for (int i = 0; i < Controller.getAnzahlMonteure(args); i++) {
+				try {
+					exceptionthrown = false;
+					monteurLinkedList.add(new Monteur(ids[i]));
+					monteurLinkedList.get(i).start();
+					monteurLinkedList.get(i).setBauteile(lagermit.getAlleBenoetigtenRoboterTeile());
+					lagermit.readFile();
+					monteurLinkedList.get(i).bauen(sekretariat.getId());
+					fertigeroboter[i] = monteurLinkedList.get(i).getRoboter();
+				} catch (ArrayIndexOutOfBoundsException e) {
+					for (int o = 0; o < Controller.getAnzahlMonteure(args); o++) {
+						lagermit.writeFile(fertigeroboter[o]);
+						exceptionthrown = true;
+						if(timer.tokeepRunning() == false){
+							exceptionthrown = false;
+						}
+					}
 
-		lagermit.readFile();
-		Roboter[] fertigeroboter= new Roboter[Controller.getAnzahlMonteure(args)];
-		for(int i = 0;i<Controller.getAnzahlMonteure(args);i++){
-			try {
-				monteurLinkedList.add(new Monteur(ids[i]));
-				monteurLinkedList.get(i).start();
-				monteurLinkedList.get(i).setBauteile(lagermit.getAlleBenoetigtenRoboterTeile());
-				lagermit.readFile();
-				monteurLinkedList.get(i).bauen(sekretariat.getId());
-				fertigeroboter[i]= monteurLinkedList.get(i).getRoboter();
-			}catch (ArrayIndexOutOfBoundsException e){
-				System.out.println(i);
-				for(int o = 0;o<Controller.getAnzahlMonteure(args);o++){
-					lagermit.writeFile(fertigeroboter[o]);
 				}
+
 			}
-
-		}
-
+			System.out.println("nach catch");
+		}while(exceptionthrown == true);
 		do {
 
 

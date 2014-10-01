@@ -1,9 +1,6 @@
 package tgm.sew.hit.roboterfabrik;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.RandomAccessFile;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Random;
@@ -18,6 +15,7 @@ public class Lieferant {
 	ArrayList<String> inhalt = new ArrayList<String>(); //used part numbers
 	String verzeichnis=""; //path to storage
 	String[] bauteilarten=new String[4]; // here are the parts that can be delivered
+	String[] bauteilartenforspeichern=new String[4]; //
 
 	/**
 	 *  This constructor adds the storage path and generates the parts that can be "delivered"
@@ -32,6 +30,10 @@ public class Lieferant {
 		bauteilarten[1]="auge";
 		bauteilarten[2]="rumpf";
 		bauteilarten[3]="kettenantrieb";
+		bauteilartenforspeichern[0]="Arm";
+		bauteilartenforspeichern[1]="Auge";
+		bauteilartenforspeichern[2]="Rumpf";
+		bauteilartenforspeichern[3]="Kettenantrieb";
 
 	}
 
@@ -42,7 +44,7 @@ public class Lieferant {
 	 */
 
 	public void liefern(int anzahl ){
-
+		FileWriter fileWriter;
 		for(int i = 0;i<anzahl;i++) {
 			Random rand = new Random();
 			int randomNum = rand.nextInt((4 - 1) + 1) + 1;
@@ -50,10 +52,8 @@ public class Lieferant {
 			File file_speichern = new File(verzeichnis + "/" +bauteilarten[randomNum]+".csv");
 			this.readFile(file_speichern,bauteilarten[randomNum]);
 			try {
-				RandomAccessFile raf = new RandomAccessFile(verzeichnis + "/" +bauteilarten[randomNum]+".csv","rw");
-				raf.seek(raf.length());
-				raf.writeUTF(bauteilarten[randomNum]+this.generateGanzzahlen(bauteilarten[randomNum]));
-				raf.close();
+				fileWriter = new FileWriter(file_speichern,true);
+				fileWriter.write(bauteilartenforspeichern[randomNum]+this.generateGanzzahlen(bauteilarten[randomNum]));
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			} catch (IOException e) {
