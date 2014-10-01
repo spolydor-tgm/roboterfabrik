@@ -124,6 +124,9 @@ public class Lagermitarbeiter {
 		return seriennr;
 	}
 
+	/**
+	 *
+	 */
 	private void read() {
 		int count;
 		int seriennr[];
@@ -188,6 +191,12 @@ public class Lagermitarbeiter {
 		return true;
 	}
 
+	/**
+	 *
+	 * @param bauteil
+	 * @param position
+	 * @return
+	 */
 	public static String bauteileSeriennrToString(Bauteil[] bauteil, int position) {
 		String ret = "";
 		int[] bt = bauteil[position].getSeriennr();
