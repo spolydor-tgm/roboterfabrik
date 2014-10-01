@@ -25,7 +25,6 @@ public class Controller {
 		int[] ids = sekretariat.getUniqueIDs();
 
 
-
 		lieferant.liefern(Controller.getAnzahlLieferanten(args));
 		boolean exceptionthrown =false;
 		int lastmonteurstarted=0;

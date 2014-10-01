@@ -26,6 +26,7 @@ class TimerWD extends Thread{
 		try {
 			sleeper.sleep(length);
 			this.keeprunning=false;
+
 		} catch (InterruptedException e) {
 
 		}
