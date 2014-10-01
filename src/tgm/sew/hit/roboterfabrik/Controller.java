@@ -20,10 +20,7 @@ public class Controller {
 
 		TimerWD timer= new TimerWD(Controller.getLaufzeit(args));
 
-
-
 		int[] ids = sekretariat.getUniqueIDs();
-
 
 		lieferant.liefern(Controller.getAnzahlLieferanten(args));
 		boolean exceptionthrown =false;
@@ -34,6 +31,7 @@ public class Controller {
 			lagermit.readFile();
 			Roboter[] fertigeroboter = new Roboter[Controller.getAnzahlMonteure(args)];
 			int i=0;
+			boolean firsttimerun=true;
 			while(i < Controller.getAnzahlMonteure(args)){
 				try {
 					exceptionthrown = false;
@@ -42,10 +40,12 @@ public class Controller {
 						monteurLinkedList.get(i).start();
 					}
 					monteurLinkedList.get(i).setBauteile(lagermit.getAlleBenoetigtenRoboterTeile());
+					//Logging.writeLog("Mitarbeiter-ID: "+monteurLinkedList.get(i).getID()+"hat die Bauteile: 2Arme, 2Augen, Kettenantrieb, Rumpf angefordert");
 					lagermit.readFile();
 					monteurLinkedList.get(i).bauen(sekretariat.getId());
 					fertigeroboter[i] = monteurLinkedList.get(i).getRoboter();
 				} catch (ArrayIndexOutOfBoundsException e) {
+					/*
 					int z = i;
 					//i= Controller.getAnzahlMonteure(args)-1;
 					for (int o = 0; o < z-1; o++) {
@@ -55,10 +55,10 @@ public class Controller {
 							exceptionthrown = false;
 						}
 					}
-					break;
-
+					//break;
+					*/
 				}
-				System.out.println(i);
+
 				i++;
 			}
 			/*
@@ -66,7 +66,6 @@ public class Controller {
 				exceptionthrown = true;
 			}
 			*/
-			System.out.println("nach catch");
 			lastmonteurstarted=i+1;
 		}while(exceptionthrown == true);
 		do {
@@ -84,9 +83,13 @@ public class Controller {
 
 			}
 		}while( timer.tokeepRunning() == true);
-		System.out.println("nach10sec");
 	}
 
+	/**
+	 *
+	 * @param args
+	 * @return
+	 */
 	private static String getLagerVerzeichnis(String[] args){
 		String lager= "--lager";
 		for(int i = 0;i<args.length;i++){
@@ -99,6 +102,11 @@ public class Controller {
 
 	}
 
+	/**
+	 *
+	 * @param args
+	 * @return
+	 */
 	private static int getAnzahlLieferanten(String[] args){
 		String lieferanten= "--lieferanten";
 		for(int i = 0;i<args.length;i++){
@@ -110,6 +118,12 @@ public class Controller {
 		return 0;
 
 	}
+
+	/**
+	 *
+	 * @param args
+	 * @return
+	 */
 	private static int getAnzahlMonteure(String[] args){
 		String monteure= "--monteure";
 		for(int i = 0;i<args.length;i++){
@@ -121,6 +135,12 @@ public class Controller {
 		return 0;
 
 	}
+
+	/**
+	 *
+	 * @param args
+	 * @return
+	 */
 	private static int getLaufzeit(String[] args){
 		String laufzeit= "--laufzeit";
 		for(int i = 0;i<args.length;i++){
