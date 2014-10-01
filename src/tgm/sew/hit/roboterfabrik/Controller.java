@@ -29,7 +29,7 @@ public class Controller {
 		lieferant.liefern(Controller.getAnzahlLieferanten(args));
 		boolean exceptionthrown =false;
 		do {
-			try {
+			//try {
 			lieferant.liefern(Controller.getAnzahlLieferanten(args));
 			lagermit.readFile();
 			Roboter[] fertigeroboter = new Roboter[Controller.getAnzahlMonteure(args)];
@@ -54,9 +54,11 @@ public class Controller {
 				}
 
 			}
+			/*
 			}catch (ParseExpection e) {
 				exceptionthrown = true;
 			}
+			*/
 			System.out.println("nach catch");
 			exceptionthrown = false;
 		}while(exceptionthrown == true);

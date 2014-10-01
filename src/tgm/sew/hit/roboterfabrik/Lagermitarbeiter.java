@@ -115,7 +115,7 @@ public class Lagermitarbeiter {
 	 * @param roboter Roboter dessen Informationen zu einem String geschrieben werden, um diese fertig in ein File zu schreiben
 	 * @return String fertig um diesen in das File zu schreiben
 	 */
-	public String roboterToString(Roboter roboter) {
+	public String roboterToString(Roboter roboter) throws NullPointerException{
 		String seriennr = "Threadee-ID" + roboter.getId() + ", " + roboter.getName() + ",";
 		for (int x = 0; x < roboter.getBauteile().length; x++) {
 			seriennr = seriennr + roboter.getBauteile()[x].getTyp() + ",";
