@@ -28,31 +28,39 @@ public class Controller {
 
 		lieferant.liefern(Controller.getAnzahlLieferanten(args));
 		boolean exceptionthrown =false;
+		int lastmonteurstarted=0;
 		do {
 			//try {
 			lieferant.liefern(Controller.getAnzahlLieferanten(args));
 			lagermit.readFile();
 			Roboter[] fertigeroboter = new Roboter[Controller.getAnzahlMonteure(args)];
-			for (int i = 0; i < Controller.getAnzahlMonteure(args); i++) {
+			int i=0;
+			while(i < Controller.getAnzahlMonteure(args)){
 				try {
 					exceptionthrown = false;
-					monteurLinkedList.add(new Monteur(ids[i]));
-					monteurLinkedList.get(i).start();
+					if(lastmonteurstarted <= i) {
+						monteurLinkedList.add(new Monteur(ids[i]));
+						monteurLinkedList.get(i).start();
+					}
 					monteurLinkedList.get(i).setBauteile(lagermit.getAlleBenoetigtenRoboterTeile());
 					lagermit.readFile();
 					monteurLinkedList.get(i).bauen(sekretariat.getId());
 					fertigeroboter[i] = monteurLinkedList.get(i).getRoboter();
 				} catch (ArrayIndexOutOfBoundsException e) {
-					for (int o = 0; o < i-1; o++) {
+					int z = i;
+					//i= Controller.getAnzahlMonteure(args)-1;
+					for (int o = 0; o < z-1; o++) {
 						lagermit.writeFile(fertigeroboter[o]);
 						exceptionthrown = true;
 						if(timer.tokeepRunning() == false){
 							exceptionthrown = false;
 						}
 					}
+					break;
 
 				}
-
+				System.out.println(i);
+				i++;
 			}
 			/*
 			}catch (ParseExpection e) {
@@ -60,7 +68,7 @@ public class Controller {
 			}
 			*/
 			System.out.println("nach catch");
-			exceptionthrown = false;
+			lastmonteurstarted=i+1;
 		}while(exceptionthrown == true);
 		do {
 
