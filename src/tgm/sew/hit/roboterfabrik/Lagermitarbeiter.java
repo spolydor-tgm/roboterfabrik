@@ -22,16 +22,6 @@ public class Lagermitarbeiter {
 	FileWriter fileWriter;
 
 	/**
-	 * Position im Array von den rumpf und kettenl, da von diesen immer 1 f�r einen Roboter ben�tigt werden
-	 */
-	private int standArray1 = 0;
-
-	/**
-	 * Position im Array von den Augen und Armen, da von diesen immer 2 f�r einen Roboter ben�tigt werden
-	 */
-	private int standArray2 = 0;
-
-	/**
 	 * Speichert den Pfad f�r die Dateien
 	 */
 	private String pfad;
@@ -115,7 +105,6 @@ public class Lagermitarbeiter {
 			fileWriter.flush(); // Leeren des Streams
 			fileWriter.close(); // Writer Stream wird geschlossen
 		} catch (IOException e) {
-			e.printStackTrace();
 		}
 		return true;
 	}
@@ -135,88 +124,76 @@ public class Lagermitarbeiter {
 		return seriennr;
 	}
 
+	private void read() {
+		int count;
+		int seriennr[];
+		String pfad = "";
+		Scanner scanner;
+		String speichernName = "";
+		try {
+			for (int x = 0; x < 4; x++) {
+				switch (x) {
+					case 0:
+						pfad = "/arm.csv";
+						speichernName = "arm";
+						break;
+					case 1:
+						pfad = "/auge.csv";
+						speichernName = "auge";
+						break;
+					case 2:
+						pfad = "/rumpf.csv";
+						speichernName = "rumpf";
+						break;
+					case 3:
+						pfad = "/kettenantrieb.csv";
+						speichernName = "kettenantrieb";
+						break;
+				}
+				count = 0;
+				scanner = new Scanner(new File(this.pfad, pfad));
+				while (scanner.hasNextLine())
+					count++;
+				scanner.close();
+				scanner = new Scanner(new File(this.pfad, pfad));
+				for (int xx = 0; xx < count; xx++) {
+					seriennr = new int[20];
+					String[] split = scanner.nextLine().split(",");
+					for (int y = 1; y <= 20; y++)
+						seriennr[y - 1] = Integer.parseInt(split[y]);
+					this.arme[xx] = new Bauteil("arm", seriennr);
+					switch (x) {
+						case 0: this.arme[xx] = new Bauteil(speichernName, seriennr);
+							break;
+						case 1: this.augen[xx] = new Bauteil(speichernName, seriennr);
+							break;
+						case 2: this.rumpf[xx] = new Bauteil(speichernName, seriennr);
+							break;
+						case 3: this.rumpf[xx] = new Bauteil(speichernName, seriennr);
+							break;
+					}
+				}
+				scanner.close();
+			}
+		} catch (FileNotFoundException e) {
+		}
+	}
+
 	/**
-	 * Liest alle Files (Auge, Arme, Rumpf, Kettenl)
+	 * Liest alle Files (Arme, Auge, Rumpf, Kettenantrieb)
 	 * @return true wenn fertig
 	 */
 	public boolean readFile() {
-		// BufferedReader in = null;
-		int count = 0;
-		int seriennr[];
-		String pfad = this.pfad + "/arm.csv";
-		try {
-			Scanner scanner = new Scanner(new File(pfad));
-			// in = new BufferedReader(new FileReader(pfad));
-			while (scanner.hasNextLine()) {
-				count++;
-			}
-			scanner.close();
-			scanner = new Scanner(new File(pfad));
-			this.arme = new Bauteil[count];
-			for (int x = 0; x < count; x++) {
-				seriennr = new int[20];
-				String[] split = scanner.nextLine().split(",");
-				for (int y = 1; y <= 20; y++)
-					seriennr[y - 1] = Integer.parseInt(split[y]);
-				this.arme[x] = new Bauteil("arm", seriennr);
-			}
-			scanner.close();
-
-			pfad = this.pfad + "/auge.csv";
-			scanner = new Scanner(new File(pfad));
-			while (scanner.hasNextLine()) {
-				count++;
-			}
-			scanner.close();
-			scanner = new Scanner(new File(pfad));
-			this.arme = new Bauteil[count];
-			for (int x = 0; x < count; x++) {
-				seriennr = new int[20];
-				String[] split = scanner.nextLine().split(",");
-				for (int y = 1; y <= 20; y++)
-					seriennr[y - 1] = Integer.parseInt(split[y]);
-				this.arme[x] = new Bauteil("auge", seriennr);
-			}
-			scanner.close();
-
-			pfad = this.pfad + "/rumpf.csv";
-			scanner = new Scanner(new File(pfad));
-			while (scanner.hasNextLine()) {
-				count++;
-			}
-			scanner.close();
-			scanner = new Scanner(new File(pfad));
-			this.arme = new Bauteil[count];
-			for (int x = 0; x < count; x++) {
-				seriennr = new int[20];
-				String[] split = scanner.nextLine().split(",");
-				for (int y = 1; y <= 20; y++)
-					seriennr[y - 1] = Integer.parseInt(split[y]);
-				this.arme[x] = new Bauteil("rumpf", seriennr);
-			}
-			scanner.close();
-
-			pfad = this.pfad + "/kettenantrieb.csv";
-			scanner = new Scanner(new File(pfad));
-			while (scanner.hasNextLine()) {
-				count++;
-			}
-			scanner.close();
-			scanner = new Scanner(new File(pfad));
-			this.arme = new Bauteil[count];
-			for (int x = 0; x < count; x++) {
-				seriennr = new int[20];
-				String[] split = scanner.nextLine().split(",");
-				for (int y = 1; y <= 20; y++)
-					seriennr[y - 1] = Integer.parseInt(split[y]);
-				this.arme[x] = new Bauteil("kettenantrieb", seriennr);
-			}
-			scanner.close();
-
-		} catch (FileNotFoundException fnfe) {
-			fnfe.printStackTrace();
-		}
+		this.read();
 		return true;
+	}
+
+	public static String bauteileSeriennrToString(Bauteil[] bauteil, int position) {
+		String ret = "";
+		int[] bt = bauteil[position].getSeriennr();
+		for (int x = 0; x < bt.length; x++)
+			ret = ret + "," + bt[x];
+		return ret;
 	}
 
 	/**
@@ -224,17 +201,42 @@ public class Lagermitarbeiter {
 	 * @return Bauteil[] gibt alle Bauteile f�r einen Roboter zurueck. Dieses Array muss nur noch dem Roboter Konstruktor �bergeben
 	 * werden und dieser erzeugt ihn dann. Alle Teile sind schon in der richtigen Reihenfolge.
 	 */
-	public Bauteil[] getAlleBenoetigtenRoboterTeile() {
+	public Bauteil[] getAlleBenoetigtenRoboterTeile() throws ArrayIndexOutOfBoundsException{
 		Bauteil[] alleTeile = new Bauteil[6];
-		alleTeile[0] = this.getArme()[this.standArray2];
-		alleTeile[1] = this.getArme()[this.standArray2 + 1];
-		alleTeile[2] = this.getAugen()[this.standArray2];
-		alleTeile[3] = this.getAugen()[this.standArray2 + 1];
-		//this.standArray2++;
-		alleTeile[4] = this.getRumpf()[this.standArray1];
-		alleTeile[5] = this.getKettenantrieb()[this.standArray1];
-		//this.standArray1++;
-
+		alleTeile[0] = this.getArme()[1];
+		alleTeile[1] = this.getArme()[2];
+		alleTeile[2] = this.getAugen()[1];
+		alleTeile[3] = this.getAugen()[2];
+		alleTeile[4] = this.getRumpf()[1];
+		alleTeile[5] = this.getKettenantrieb()[1];
+		try {
+			String pfad = "";
+			Bauteil[] teile = null;
+			for (int x = 0; x < 4; x++) {
+				switch (x) {
+					case 0: pfad = "/arm.csv";
+						teile = this.getArme();
+						break;
+					case 1: pfad = "/auge.csv";
+						teile = this.getAugen();
+						break;
+					case 2: pfad = "/rumpf.csv";
+						teile = this.getRumpf();
+						break;
+					case 3: pfad = "/kettenantrieb.csv";
+						teile = this.getKettenantrieb();
+						break;
+				}
+				fileWriter = new FileWriter(this.pfad + pfad, true);
+				for (int y = 0; y < teile.length; y++) {
+					fileWriter.write(teile[y].getTyp() + Lagermitarbeiter.bauteileSeriennrToString(teile, y));
+					fileWriter.write(System.getProperty("line.seperator")); // Plattformunabhaengiger Zeilenumbruch
+				}
+				fileWriter.flush(); // Leeren des Streams
+				fileWriter.close(); // Writer Stream wird geschlossen
+			}
+		} catch (IOException e) {
+		}
 		return alleTeile;
 	}
 }
