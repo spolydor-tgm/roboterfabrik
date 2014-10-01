@@ -10,7 +10,7 @@ public class Controller {
 	public static void main(String[] args) {
 
 
-		new New_CLI(args).parse();
+		new CLI(args).parse();
 
 		//changessss
 		LinkedList<Monteur> monteurLinkedList = new LinkedList<Monteur>();
@@ -18,7 +18,7 @@ public class Controller {
 		 //logverzeichnis(commandlineinterface.getLager());
 
 		Lagermitarbeiter lagermit = new Lagermitarbeiter(Controller.getLagerVerzeichnis(args));
-		Lieferant lieferant = new Lieferant(Controller.getLagerVerzeichnis(args));
+		//Lieferant lieferant = new Lieferant(Controller.getLagerVerzeichnis(args));
 		System.out.print("schlafen start");
 		TimerWD timer= new TimerWD(Controller.getLaufzeit(args));
 		System.out.print("schlafen ende");
@@ -31,7 +31,7 @@ public class Controller {
 		System.out.println(Controller.getAnzahlMonteure(args));
 		System.out.println(Controller.getLaufzeit(args));
 
-		lieferant.liefern(Controller.getAnzahlLieferanten(args));
+		//lieferant.liefern(Controller.getAnzahlLieferanten(args));
 		System.out.println("nach lieferant");
 		lagermit.readFile();
 		System.out.print("nachreadfile");
@@ -46,7 +46,7 @@ public class Controller {
 		do {
 			System.out.println(k);
 			k++;
-			lieferant.liefern(Controller.getAnzahlLieferanten(args));
+			//lieferant.liefern(Controller.getAnzahlLieferanten(args));
 			for (int i = 0; i < Controller.getAnzahlMonteure(args); i++) {
 				Roboter fertigrobo = monteurLinkedList.get(i).getRoboter();
 				lagermit.writeFile(fertigrobo);
