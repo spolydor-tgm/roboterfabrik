@@ -19,33 +19,40 @@ public class Controller {
 
 		Lagermitarbeiter lagermit = new Lagermitarbeiter(Controller.getLagerVerzeichnis(args));
 		Lieferant lieferant = new Lieferant(Controller.getLagerVerzeichnis(args));
+		System.out.print("schlafen start");
 		TimerWD timer= new TimerWD(Controller.getLaufzeit(args));
-
+		System.out.print("schlafen ende");
 
 
 		int[] ids = sekretariat.getUniqueIDs();
-		/*
-		System.out.println(test.getLager());
-		System.out.println(test.getZeit());
-		System.out.println(test.getLieferant());
-		System.out.println(test.getMonteure());
-		*/
+
+		System.out.println(Controller.getLagerVerzeichnis(args));
+		System.out.println(Controller.getAnzahlLieferanten(args));
+		System.out.println(Controller.getAnzahlMonteure(args));
+		System.out.println(Controller.getLaufzeit(args));
+
 		lieferant.liefern(Controller.getAnzahlLieferanten(args));
+		System.out.println("nach lieferant");
 		lagermit.readFile();
+		System.out.print("nachreadfile");
 		for(int i = 0;i<Controller.getAnzahlMonteure(args);i++){
+			System.out.print("ersteforschleife"+i);
 			monteurLinkedList.add(new Monteur(ids[i]));
 			monteurLinkedList.get(i).start();
 			monteurLinkedList.get(i).setBauteile(lagermit.getAlleBenoetigtenRoboterTeile());
 			monteurLinkedList.get(i).bauen(sekretariat.getId());
 		}
-
+		int k = 0;
 		do {
+			System.out.println(k);
+			k++;
 			lieferant.liefern(Controller.getAnzahlLieferanten(args));
 			for (int i = 0; i < Controller.getAnzahlMonteure(args); i++) {
 				Roboter fertigrobo = monteurLinkedList.get(i).getRoboter();
 				lagermit.writeFile(fertigrobo);
 				monteurLinkedList.get(i).setBauteile(lagermit.getAlleBenoetigtenRoboterTeile());
 				monteurLinkedList.get(i).bauen(sekretariat.getId());
+				System.out.println("For schleife" + i);
 			}
 		}while( timer.tokeepRunning() == true);
 	}

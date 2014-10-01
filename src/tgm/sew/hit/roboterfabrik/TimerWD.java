@@ -6,24 +6,27 @@ package tgm.sew.hit.roboterfabrik;
 class TimerWD implements Watchdog{
 	boolean keeprunning=true;
 	long length=0;
-	SleeperThread sleep;
-
+	Thread sleeper = new Thread();
 
 	public TimerWD(long length){
-		sleep = new SleeperThread(length);
+		sleeper.start();
 	}
 
 	public boolean tokeepRunning(){
 
-		if(sleep.getStatus() == true) {
-			return false;
-		}else{return true;}
+		if(keeprunning == true) {
+			return true;
+		}else{return false;}
 
 	}
 
-	public void setTime(int time){
-
-		keeprunning=false;
+	public void run(){
+		try {
+			sleeper.sleep(length);
+			keeprunning=false;
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 
 	}
 
