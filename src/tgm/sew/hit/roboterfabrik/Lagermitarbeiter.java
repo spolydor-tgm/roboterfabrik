@@ -145,6 +145,7 @@ public class Lagermitarbeiter {
 				while ( in.readLine() != null ) {
 				count++;
 			}
+			in.close();
 			in = new BufferedReader(new FileReader(pfad));
 			this.arme = new Bauteil[count];
 			for (int x = 0; x < count; x++) {
@@ -155,11 +156,13 @@ public class Lagermitarbeiter {
 				this.arme[x] = new Bauteil("arm", seriennr);
 			}
 
+			in.close();
 			pfad = this.pfad + "/auge.csv";
 			in = new BufferedReader(new FileReader(pfad));
 			while ( in.readLine() != null ) {
 				count++;
 			}
+			in.close();
 			in = new BufferedReader(new FileReader(pfad));
 			this.arme = new Bauteil[count];
 			for (int x = 0; x < count; x++) {
@@ -170,11 +173,13 @@ public class Lagermitarbeiter {
 				this.arme[x] = new Bauteil("auge", seriennr);
 			}
 
+			in.close();
 			pfad = this.pfad + "/rumpf.csv";
 			in = new BufferedReader(new FileReader(pfad));
 			while ( in.readLine() != null ) {
 				count++;
 			}
+			in.close();
 			in = new BufferedReader(new FileReader(pfad));
 			this.arme = new Bauteil[count];
 			for (int x = 0; x < count; x++) {
@@ -185,11 +190,13 @@ public class Lagermitarbeiter {
 				this.arme[x] = new Bauteil("rumpf", seriennr);
 			}
 
+			in.close();
 			pfad = this.pfad + "/kettenantrieb.csv";
 			in = new BufferedReader(new FileReader(pfad));
 			while ( in.readLine() != null ) {
 				count++;
 			}
+			in.close();
 			in = new BufferedReader(new FileReader(pfad));
 			this.arme = new Bauteil[count];
 			for (int x = 0; x < count; x++) {
