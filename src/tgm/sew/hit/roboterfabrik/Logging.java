@@ -18,10 +18,9 @@ public class Logging {
 	 * @param The directory the logs have to be saved in.
 	 */
 	public static void verzFestlegen(String verz) {
-		PrintWriter writer;
 		try {
-
-			writer = new PrintWriter("lib/log4j.properties", "UTF-8");
+					
+			PrintWriter writer = new PrintWriter("lib/log4j.properties", "UTF-8");
 			writer.println("# Define the root logger with appender file");
 			writer.println("log = " + verz);
 			writer.println("log4j.rootLogger = INFO, FILE" + "\n"); // Inkl Leere Zeile

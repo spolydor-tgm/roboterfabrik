@@ -11,9 +11,9 @@ public class Controller {
 
 	public static void main(String[] args) throws ParseException{
 		new CLI(args).parse();
+		Logging.verzFestlegen(getLogsVerzeichnis(args));
 		LinkedList<Monteur> monteurLinkedList = new LinkedList<Monteur>();
 		Sekretariat sekretariat = new Sekretariat(Controller.getAnzahlMonteure(args));
-		 //logverzeichnis(commandlineinterface.getLager());
 
 		Lagermitarbeiter lagermit = new Lagermitarbeiter(Controller.getLagerVerzeichnis(args));
 		Lieferant lieferant = new Lieferant(Controller.getLagerVerzeichnis(args));
@@ -40,7 +40,7 @@ public class Controller {
 						monteurLinkedList.get(i).start();
 					}
 					monteurLinkedList.get(i).setBauteile(lagermit.getAlleBenoetigtenRoboterTeile());
-					//Logging.writeLog("Mitarbeiter-ID: "+monteurLinkedList.get(i).getID()+"hat die Bauteile: 2Arme, 2Augen, Kettenantrieb, Rumpf angefordert");
+					Logging.writeLog("Mitarbeiter-ID: "+monteurLinkedList.get(i).getID()+"hat die Bauteile: 2Arme, 2Augen, Kettenantrieb, Rumpf angefordert");
 					lagermit.readFile();
 					monteurLinkedList.get(i).bauen(sekretariat.getId());
 					fertigeroboter[i] = monteurLinkedList.get(i).getRoboter();
@@ -150,6 +150,18 @@ public class Controller {
 
 		}
 		return 0;
+
+	}
+	
+	private static String getLogsVerzeichnis(String[] args){
+		String lager= "--logs";
+		for(int i = 0;i<args.length;i++){
+			if(lager.equals(args[i])){
+				return args[i+1];
+			}
+
+		}
+		return "fehler";
 
 	}
 }

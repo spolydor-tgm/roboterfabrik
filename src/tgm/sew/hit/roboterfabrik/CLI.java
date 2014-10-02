@@ -22,6 +22,7 @@ public class CLI {
 	private Option op_zeit = new Option("r","laufzeit",true, "Zeit in der das Programm abgearbeitet wird."); //r als runtime
 
 	private String lager;
+	private String logs;
 	private int lieferant;
 	private int monteure;
 	private int zeit;
@@ -54,14 +55,14 @@ public class CLI {
 			cmd = parser.parse(options, args);
 				// Verarbeitung vom Lager-Verzeichniss
 				if (cmd.hasOption('w')) {
-					lager = cmd.getOptionValue("op_lager");
+					lager = cmd.getOptionValue("lager");
 				} else {
 					System.out.println("Fehlende Angabe: \"lager\": " +op_lager.getDescription());
 				}
 				
 				//Verarbeitung vom Logs-Verzeichniss
 				if(cmd.hasOption('l')) {
-					Logging.verzFestlegen(op_logs.toString());
+					logs = cmd.getOptionValue("l");
 				} else {
 					System.out.println("Fehlende Angabe: \"logs\": " +op_logs.getDescription());
 				}
@@ -89,5 +90,6 @@ public class CLI {
 		} catch (ParseException e) {
 			
 		}
+		
 	}
 }
