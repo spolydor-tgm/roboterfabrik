@@ -40,9 +40,11 @@ public class Controller {
 						monteurLinkedList.get(i).start();
 					}
 					monteurLinkedList.get(i).setBauteile(lagermit.getAlleBenoetigtenRoboterTeile());
-					Logging.writeLog("Mitarbeiter-ID: "+monteurLinkedList.get(i).getID()+"hat die Bauteile: 2Arme, 2Augen, Kettenantrieb, Rumpf angefordert");
+					Logging.writeLog("Mitarbeiter-ID: "+monteurLinkedList.get(i).getID()+" hat die Bauteile: 2Arme, 2Augen, Kettenantrieb, Rumpf angefordert.");
 					lagermit.readFile();
-					monteurLinkedList.get(i).bauen(sekretariat.getId());
+					int robID = sekretariat.getId();
+					monteurLinkedList.get(i).bauen(robID);
+					Logging.writeLog("Mitarbeiter-ID: "+monteurLinkedList.get(i).getID() +" hat einen Roboter mit der ID \"Threadee-ID" +robID +"\" gebaut.");
 					fertigeroboter[i] = monteurLinkedList.get(i).getRoboter();
 				} catch (ArrayIndexOutOfBoundsException e) {
 					/*
@@ -61,26 +63,24 @@ public class Controller {
 
 				i++;
 			}
-			/*
-			}catch (ParseExpection e) {
-				exceptionthrown = true;
-			}
-			*/
 			lastmonteurstarted=i+1;
 		}while(exceptionthrown == true);
 		do {
+			int i =0;
 			try {
 				lieferant.liefern(Controller.getAnzahlLieferanten(args));
-				for (int i = 0; i < Controller.getAnzahlMonteure(args); i++) {
+				for (i = 0; i < Controller.getAnzahlMonteure(args); i++) {
 					Roboter fertigrobo = monteurLinkedList.get(i).getRoboter();
 					lagermit.writeFile(fertigrobo);
 					lagermit.readFile();
 					monteurLinkedList.get(i).setBauteile(lagermit.getAlleBenoetigtenRoboterTeile());
-					monteurLinkedList.get(i).bauen(sekretariat.getId());
+					int robID = sekretariat.getId();
+					monteurLinkedList.get(i).bauen(robID);
+					Logging.writeLog("Mitarbeiter-ID: "+monteurLinkedList.get(i).getID() +" hat einen Roboter mit der ID \"Threadee-ID" +robID +"\" gebaut.");
 
 				}
 			}catch (ArrayIndexOutOfBoundsException s){
-
+				Logging.writeLog("Mitarbeiter-ID: " +monteurLinkedList.get(i).getID() +" hat nicht genug Bauteile bekommen.");
 			}
 		}while( timer.tokeepRunning() == true);
 	}
